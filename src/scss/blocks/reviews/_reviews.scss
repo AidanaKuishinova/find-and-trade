@@ -1,0 +1,74 @@
+.reviews {
+    padding: 82px 0 99px 0;
+    &__header {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 50px;
+        color: #5680E9;
+    }
+    &__wrapper {
+        margin-top: 82px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &-item {
+            width: 482px;
+            min-height: 369px;
+            padding: 38px;
+            background: #FEFEFE;
+            box-shadow: 0px 7px 17px 2px rgba(86, 128, 233, 0.2);
+            border-radius: 19px;
+            &:nth-child(even) {
+                margin-top: 86px;
+            }
+            &__header {
+                display: flex;
+                align-items: center;
+                &-img {
+                    height: 95px;
+                    width: 95px;
+                    object-fit: contain;
+                    margin-right: 39px;
+                }
+                &-rating {
+                    &__name {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 30px;
+                        color: #5680E9;
+                    }
+                    &__stars {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 6px;
+                        &-star {
+                            width: 26px;
+                            height: 26px;
+                            object-fit: contain;
+                            margin-right: 8px;
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            &__text {
+                margin-top: 31px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 21px;
+                text-align: justify;
+                color: #000000;
+            }
+        }
+    }
+}

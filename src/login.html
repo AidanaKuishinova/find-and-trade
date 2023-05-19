@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <div class="authorization__container">
+        <a href="index.html" class="authorization__container-heading">FIND-N-TRADE</a>
+        <img src="icons/circles/Ellipse_blue.svg" id="blue">
+        <div class="authorization__wrapper">
+            <div class="authorization__wrapper-block">
+                <h1 class="authorization__wrapper-block-heading">Войдите в аккаунт</h1>
+                <form class="authorization__wrapper-block-form">
+                    <div class="authorization__wrapper-block-form__pair">
+                        <label for="email" class="authorization__wrapper-block-form__pair-label">Email адрес</label>
+                        <input type="email" class="authorization__wrapper-block-form__pair-input" name="email">
+                    </div>
+                    <div class="authorization__wrapper-block-form__pair">
+                        <label for="password" class="authorization__wrapper-block-form__pair-label">Пароль</label>
+                        <input type="password" class="authorization__wrapper-block-form__pair-input" name="password">
+                    </div>
+                    <div class="authorization__wrapper-block-form-error">Неверный email или пароль</div>
+                    <button type="submit" class="authorization__wrapper-block-form-button">Войти</button>
+                    <span class="authorization__wrapper-block-form-forgetten__password"><a href="forgot_password_1.html" class="forgetten__password">Забыли пароль?</a></span>
+                    <span>Нет аккаунта? <a href="registration.html"><u>Зарегистрируйтесь</u></a></span>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

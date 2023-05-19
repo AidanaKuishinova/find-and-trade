@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="registration__container">
+        <a href="index.html">FIND-N-TRADE</a>
+        <!-- <img src="icons/circles/Ellipse_green.svg"  id="green_circle"> -->
+        <img src="icons/circles/Ellipse_blue.svg" id="blue">
+        <div class="registration__wrapper">
+            <h1 class="registration__header">Регистрация</h1>
+
+             <form action="" class="registration__form">
+                <div class="registration__form__inputs">
+                    <div class="registration__form__inputs-pair">
+                        <label for="name">Имя</label>
+                        <input type="text" class="registration__form__inputs-pair-input" name="name">
+                    </div>
+                    <div class="registration__form__inputs-pair">
+                        <label for="surname">Фамилия</label>
+                        <input type="text" class="registration__form__inputs-pair-input" name="surname">
+                    </div>
+                    <div class="registration__form__inputs-pair">
+                        <label for="email">Email адрес </label>
+                        <input type="email" class="registration__form__inputs-pair-input" name="email">
+                    </div>
+                    <div class="registration__form__inputs-pair">
+                        <label for="phone">Сотовый телефон</label>
+                        <input type="text" class="registration__form__inputs-pair-input" name="phone">
+                    </div>
+                    <div class="registration__form__inputs-pair">
+                        <label for="password1">Придумайте пароль</label>
+                        <input type="password" class="registration__form__inputs-pair-input" name="password1">
+                        <span class="warning">Пароль должен содержать от 8 до 14 симолов, одну строчную, одну заглавную букву и одну цифру</span>
+                    </div>
+                    <div class="registration__form__inputs-pair">
+                        <label for="password2">Повторите пароль</label>
+                        <input type="password" class="registration__form__inputs-pair-input" name="password2">
+                    </div>
+                    <div class="registration__form__inputs-pair-radios">
+                        <label for="role_header" style="margin: 9px 0px">Роль</label>
+                        <div class="registration__form__inputs-pair-radios_label">
+                            <input type="radio" class="registration__form__inputs-pair-input-radio" name="role" value="fjdskl">
+                            <label for="role">Предприниматель/заказчик</label>
+                        </div>
+                        <div class="registration__form__inputs-pair-radios_label">
+                            <input type="radio" class="registration__form__inputs-pair-input-radio" name="role" value="fjdskl">
+                            <label for="role">Исполнитель/поставщик</label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="registration__form-auth">
+                    <span>Есть логин? <a href="login.html"><u>Войдите</u></a></span>
+                </div>
+
+                <button class="registration__form-button">
+                    Далее
+                </button>
+
+              
+             </form>
+        </div>
+    </div>
+</body>
+</html>

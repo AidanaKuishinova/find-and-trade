@@ -1,0 +1,100 @@
+.body{
+    background: url("../icons/back.svg") center/cover no-repeat;
+    padding: 123px;
+}
+
+.error__container{
+    background-color: white;
+    border-radius: 15px;
+    width: 100%;
+
+    &__wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 0px;
+
+        &-heading{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 170px;
+            line-height: 206px;
+            text-align: center;
+
+            background: radial-gradient(100% 361.83% at 0% 100%, #5680E9 0%, rgba(86, 128, 233, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(105.43% 381.47% at 100% 23.91%, #35DABA 0%, rgba(53, 218, 186, 0) 74.34%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        &-not_found{
+            font-weight: 700;
+            font-size: 64px;
+            line-height: 77px;
+            text-align: center;
+
+            background: radial-gradient(97.52% 12363.78% at 2.48% 49.35%, #35DABA 0%, rgba(53, 218, 186, 0) 100%), radial-gradient(103.34% 13102.24% at 103.34% 80.52%, #5680E9 0%, rgba(86, 128, 233, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        span{
+            font-weight: 600;
+            font-size: 24px;
+            text-align: center;
+            color: #001C61;
+            margin-top: 27px;
+        }
+        &__buttons{
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin-top: 30px;
+
+            button{
+                cursor: pointer;
+                font-weight: bold;
+                transition: all 0.3s ease;
+            }
+
+            &-back{
+                width: 282px;
+                height: 60px;
+                background: #FFFFFF;
+                border: 1px solid #5680E9;
+                border-radius: 30px;
+                font-size: 22px;
+
+                a{
+                color: #5680E9;
+
+                }
+                &:hover{
+                    background: #5680E9;
+                    color: white;
+                }
+                &:hover a{
+                    color: white;
+
+                }
+                
+            }
+    
+            &-home{
+                width: 282px;
+                height: 60px;
+                background: conic-gradient(from 180deg at 50% 50%, rgba(53, 218, 186, 0) -59.42deg, #35DABA 105.35deg, rgba(53, 218, 186, 0) 300.58deg, #35DABA 465.35deg), conic-gradient(from 180deg at 50% 50%, #5680E9 -85.19deg, rgba(86, 128, 233, 0) 94.63deg, #5680E9 274.81deg, rgba(86, 128, 233, 0) 454.63deg);
+                border-radius: 30px;
+                font-size: 22px;
+
+                &:hover{
+                    opacity: 0.75;
+                }
+            }
+        }
+    
+
+    }
+}

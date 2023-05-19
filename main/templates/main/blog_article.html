@@ -1,0 +1,120 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Статья</title>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+
+
+<body background="{% static 'main/images/bg3.png' %}">
+
+    <main>
+      <div class="blog_header">
+        <img src="{% static 'main/images/blog4.png' %}" alt="">
+        <div class="blog_title_1">
+          <h1>Как создать команду мечты? </h1>
+        </div>
+      </div>
+      <div class="blog_hashtags">
+        <p>#команда</p>
+        <p>#бизнес</p>
+        <p>#препренимательство</p>
+      </div>
+      <div class="blog_main_text">
+        <p>Прогресс в самых успешных компаниях мира зависит от уровня сотрудников и системы управления. Бизнес-процессы в них выстраиваются особым способом, учитывающем способности и сотрудников, и небольших команд, и подразделений, и организации в целом. Как настроить взаимозависимость личной и командной эффективности?
+          Двигателями прогресса в самых эффективных компаниях мира являются сотрудники. Какая взаимосвязь существует между эффективностью каждого члена команды, самой команды и организации в целом? Что заставляет топ-менеджеров компаний рассматривать развитие своих сотрудников как неотъемлемую часть бизнеса? Каким аспектам психологии и менджмента они уделяют внимание?
+        </p>
+        <h2>Три шага, чтобы сплотить команду:</h2>
+        <h3>1. Убедитесь, что у вас именно та система управления, которая позволяет привести бизнес к процветанию.</h3>
+        <p>Если правильной системы нет, тогда вы применяете подходящее лекарство, но не для той раны! По правде говоря, мало толку от попыток сплотить команду, которая неправильно организована. Я встречал много исполнительных директоров, которые увиливали в разговоре на тему сплоченности и организации команды. Такое поведение руководителя всегда приводит к замедлению работы, а затем к разочарованию, когда не удается получить ожидаемых результатов.</p>
+
+          <h3>2. Найдите время и силы, чтобы пересмотреть свою цель, мнение и ценности.</h3>
+        <p> Если в отделе нет сплоченности, значит, руководитель и сотрудники упустили из виду этот важный момент. Вам нужно сделать команду одним целым. Для этого потребуется донести до каждого работника коллектива важность идеи сплоченности, чтобы люди прониклись этим настроением. Процесс не быстрый, поэтому одноразовым упражнением здесь не обойтись.
+            Проводите больше времени со своими подчиненными, общайтесь и поднимайте командный дух.
+            Это не упражнение в прямом смысле слова, это умы и сердца сотрудников.
+            Если коллектив не «болеет душой» за общее дело, он не способен привести бизнес к процветанию.</p>
+
+          <h3>3. Содействуйте взаимообмену информацией между подразделениями.</h3>
+        <p> Случается, что отделы как бы изолированы друг от друга. Обособленность отделов – неотъемлемая часть развития.
+            Однако, когда она становится нормой, руководить подразделениями становится проблематично.
+            Допускать изолированность – это все равно, что идти по зыбучему песку.
+            Руководители всегда в ответе за появление и распространение изоляционных настроений в отделе, поскольку они не смогли
+            убедить людей делиться мнениями и разделять общую точку зрения. В большинстве случаев обособленные отделы появляются в
+            результате недостаточного общения руководителя с подчиненными. Иногда это спровоцировано злобой, тогда нужно найти источник
+            негатива и убрать таких людей из команды. Они – опухоль, которая вредит работе. Вы можете предотвратить появление
+            изолированных отделов путем общения с сотрудниками. Говорите о целях, мнениях и ценностях, делитесь результатами
+            деятельности компании.</p>
+
+        <p> Сплоченность команды крайне важна для будущего успеха любого бизнеса, она достигается благодаря усилиям руководства.</p>
+
+      </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__wrapper">
+                <div class="footer__links">
+                    <div class="footer__links-logo">find-n-trade</div>
+
+                    <div class="footer__links__wrapper">
+                        <div class="footer__links-column">
+                            <ul class="footer__links-column__list">
+                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Главное</a></li>
+                                <li class="footer__links-column__list-item"><a href="reviews.html" class="footer__links-column__list-item__link">Блог</a></li>
+                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">О нас</a></li>
+                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">Категории</a></li>
+                                <li class="footer__links-column__list-item"><a href="#partners" class="footer__links-column__list-item__link">Контакты</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-column">
+                            <ul class="footer__links-column__list">
+                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Объявления</a></li>
+                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Реклама на сайте</a></li>
+                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">Условия оказания услуг</a></li>
+                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">Условия использования сайта</a></li>
+                                <li class="footer__links-column__list-item"><a href="#partners" class="footer__links-column__list-item__link">Инвесторам</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-column">
+                            <ul class="footer__links-column__list">
+                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Тех.поддержка</a></li>
+                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">Пользовательское соглашение</a></li>
+                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">FAQ</a></li>
+                            </ul>
+
+                            <div class="footer__links-column__langs">
+                                <div class="footer__links-column__langs-item footer__links-column__langs-item_kz">KAZ</div>
+                                <div class="footer__links-column__langs-item footer__links-column__langs-item_en">ENG</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__social">
+                    <a href="{% url 'index' %}"><div class="footer__social-logo">FIND-N-TRADE</div></a>
+
+                    <div class="footer__social__items">
+                        <a href="https://www.instagram.com/"><img src="{% static 'main/icons/insta.svg' %}" alt="instagram" class="footer__social-item">
+                        <a href="https://www.youtube.com/"><img src="{% static 'main/icons/youtube.svg' %}" alt="youtube" class="footer__social-item">
+                        <a href="https://ru-ru.facebook.com/"><img src="{% static 'main/icons/facebook.svg' %}" alt="facebook" class="footer__social-item">
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash"></div>
+
+            <div class="footer__credit">Ⓒ 2022 Группа компании Find-n-Trade</div>
+        </div>
+    </footer>
+</body>
+</html>
+{% endblock %}

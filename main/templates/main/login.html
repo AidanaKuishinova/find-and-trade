@@ -1,0 +1,40 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Логин</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+    
+    <div class="authorization__container">
+        <a href="{% url 'index' %}" class="authorization__container-heading">FIND-N-TRADE</a>
+        <img src="icons/circles/Ellipse_blue.svg" id="blue">
+        <div class="authorization__wrapper">
+            <div class="authorization__wrapper-block">
+                <h1 class="authorization__wrapper-block-heading">Войдите в аккаунт</h1>
+                <form class="authorization__wrapper-block-form" method="POST">
+                    {% csrf_token %}
+ 
+                    <div class="authorization__wrapper-block-form__pair">
+                        <label for="email" class="authorization__wrapper-block-form__pair-label">Email адрес</label>
+                        <input type="email" class="authorization__wrapper-block-form__pair-input" required name="username" id="username">
+                    </div>
+                    <div class="authorization__wrapper-block-form__pair">
+                        <label for="password" class="authorization__wrapper-block-form__pair-label">Пароль</label>
+                        <input type="password" class="authorization__wrapper-block-form__pair-input" required name="password" id="password">
+                    </div>
+                    {% if form.errors %}
+                        <div class="authorization__wrapper-block-form-error">Неверный email или пароль</div>
+                    {% endif %}
+                    <button type="submit" class="authorization__wrapper-block-form-button">Войти</button>
+                    <span class="authorization__wrapper-block-form-forgetten__password"><a href="{% url 'forgot1' %}" class="forgetten__password">Забыли пароль?</a></span>
+                    <span>Нет аккаунта? <a href="{% url 'register' %}"><u>Зарегистрируйтесь</u></a></span>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+.trades {
+    min-height: 1149px;
+    padding: 90px 0;
+    &__header {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 48px;
+        color: #000000;
+        text-align: center;
+    }
+
+    &__wrapper {
+        margin-top: 27px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    &-item {
+        margin-top: 29px;
+        width: 350px;
+        min-height: 411px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.15);
+        border-radius: 14px;
+        padding: 46px 51px 24px 51px;
+        transition: 0.3s all;
+        &:hover {
+            transform: translateY(-5%);
+        }
+        &__img {
+            object-fit: contain;
+            height: 248px;
+            width: 248px;
+            border-radius: 18px;
+        }
+        &__name {
+            margin-top: 17px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            text-align: center;
+            color: #5680E9;
+        }
+        &__btn {
+            background: #5680E9;
+            border-radius: 9px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin: 0 auto;
+            transition: 0.3s all;
+            margin-top: 15px;
+            width: 124px;
+            height: 37px;
+            font-size: 18px;
+            &:hover {
+                background: #fff;
+                color: #5680E9;
+                border: 1px solid #5680E9;
+            }
+        }
+    }
+}

@@ -1,0 +1,112 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Профиль пользователя</title>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+
+<body background="images/bg2.png">
+
+    <header>
+
+        <div class="webtitle"><a href="main.html"><img src="images/Find-n-trade.png" alt=""></a></div>
+        <div class="headerright">
+            <a href="#">Категории</a>
+            <a href="#">Блог</a>
+            <a href="#">О нас</a>
+            <a href="#">Контакты</a>
+        </div>
+        <div class="lang-menu">
+            <div class="select-lang">
+                РУС
+            </div>
+            <ul>
+                <li><a href="#">ҚАЗ</a></li>
+                <li><a href="#">ENG</a></li>
+            </ul>
+        </div>
+        <div class="icons">
+            <a href=""><img src="images/location.png" alt=""></a>
+            <a href="#"><img src="images/user.png" alt=""></a>
+        </div>
+
+    </header>
+
+    <main>
+      <div class="other_users_profile">
+        <div class="other_users_profile_left">
+          <div class="other_users_profile_left_1">
+            <div class="other_users_profile_left_1_image">
+              <img src="images/blog3.jpeg" alt="">
+            </div>
+            <br>
+            <h2>Имя Фамилия</h2>
+            <br>
+            <h3>Название компании</h3>
+            <em><h4>На сайте с 9 ноября 2022</h4></em>
+            <br>
+            <div class="other_users_profile_left_1_buttons">
+              <button id="other_users_profile_share"type="submit" name="button">Поделиться</button>
+              <button type="submit" name="button">Подписаться</button>
+            </div>
+          </div>
+        </div>
+        <div class="other_users_profile_right">
+          <div class="other_users_profile_right_1">
+            <h2>О себе/компании</h2>
+            <br>
+            <p>nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras </p>
+          </div>
+          <div class="other_users_profile_right_2">
+            <div class="other_users_profile_right_2_ad">
+              <div class="other_users_profile_right_2_ad_image">
+                <img src="images/blog3.jpeg" alt="">
+              </div>
+              <div class="other_users_profile_right_2_ad_desc">
+                <a href="#"><h2>Свежая клубника Турция и Египет</h2></a>
+                <br>
+                <p id="other_users_profile_right_2_ad_desc">nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras</p>
+                <br>
+                <p>2 мая 2023</p>
+              </div>
+            </div>
+            <div class="other_users_profile_right_2_ad">
+              <div class="other_users_profile_right_2_ad_image">
+                <img src="images/blog3.jpeg" alt="">
+              </div>
+              <div class="other_users_profile_right_2_ad_desc">
+                <a href="#"><h2>Свежая клубника Турция и Египет</h2></a>
+                <br>
+                <p id="other_users_profile_right_2_ad_desc">nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras</p>
+                <br>
+                <p>2 мая 2023</p>
+              </div>
+            </div>
+            <div class="other_users_profile_right_2_ad">
+              <div class="other_users_profile_right_2_ad_image">
+                <img src="images/blog3.jpeg" alt="">
+              </div>
+              <div class="other_users_profile_right_2_ad_desc">
+                <a href="#"><h2>Свежая клубника Турция и Египет</h2></a>
+                <br>
+                <p id="other_users_profile_right_2_ad_desc">nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras</p>
+                <br>
+                <p>2 мая 2023</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+</body>
+</html>
+{% endblock %}

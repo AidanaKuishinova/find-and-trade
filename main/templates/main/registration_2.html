@@ -1,0 +1,54 @@
+{% load static %}
+<html>
+<head>
+    <title>регистрация</title>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+
+<body background="images/bg1.png">
+    <a href="#"><img id="logo2" src="images/logo2.png" alt=""></a>
+    <main>
+      <h1 class="reg">Регистрация</h1>
+      <div class="registerchoose">
+        <p id="choosecat">Выберите категорию/тип вашего бизнеса</p>
+        <div class="buttonscats">
+          <button id="btn1" class="button_cat">Иновационный</button>
+          <button id="btn2" class="button_cat">Научно-технический</button>
+          <button id="btn3" class="button_cat" href="#">Производство товаров</button>
+        </div>
+        <div class="buttonscats">
+          <button id="btn4" class="button_cat" href="#">Оказание услуг</button>
+          <button id="btn5" class="button_cat" href="#">Производственное потребление товаров</button>
+        </div>
+        <div class="buttonscats">
+          <button id="btn6" class="button_cat" href="#">Информационный</button>
+          <button id="btn7" class="button_cat" href="#">Торговый</button>
+          <button id="btn8" class="button_cat" href="#">Товарные биржи</button>
+        </div>
+        <div class="buttonscats">
+          <button id="btn9" class="button_cat" href="#">Банковский</button>
+          <button id="btn10" class="button_cat" href="#">Информационные технологии</button>
+          <button id="btn11" class="button_cat" href="#">Страховой</button>
+        </div>
+        <div class="buttonscats">
+          <button id="btn12" class="button_cat" href="#">Администрирование</button>
+          <button id="btn13" class="button_cat" href="#">Финансовое управление</button>
+          <button id="btn14" class="button_cat" href="#">Аудиторский</button>
+        </div>
+        <p id="uploaddocs">Загрузите документы, подтверждающие деятельность вашей компании</p>
+      </div>
+      <div class="inputupload">
+        <input type="file" id="upload_button" />
+        <label id="upload_file" for="upload_button">Выбрать файл</label>
+      </div>
+      <div class="finishreg_1_2">
+        <button type="submit" name="button_finish_reg" id="finishregbtn">Завершить регистрацию</button>
+      </div>
+
+    </main>
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+<head>
+    <title>Профиль</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+
+</head>
+
+
+<body background="{% static 'main/images/bg4.png' %}">
+
+    <main class="myprofile">
+        <div class="profile">
+            {% if model.profile.image_link.file is not None %}
+              <img src="{{model.profile.image_link.url}}" alt="" style="object-fit:cover;
+                 object-position: right;
+                 width:300px;
+                 height:300px;
+                 border: solid 1px #CCC;
+                 border-radius:15px;">
+                 {% else %}
+                 <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="object-fit:cover;
+              object-position: right;
+                 width:250px;
+                 height:250px;
+                 border: solid 1px #CCC">
+                 {% endif %}
+            {% if user.is_authenticated and user.email == model.email %}
+            <a href="{% url 'profile edit' %}" id="btnedit">
+                <div class="btnedit">
+                    <i class="fa fa-pencil"></i><p id="editpro">Редактировать<br>профиль</p>
+                    <div id="penicon"><i class="fa fa-pencil"></i></div>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+
+        <div class="myinfo">
+            <div class="mytext">
+                <div class="myname">{{ model.name }} {{ model.surname }}</div>
+                <div class="mystatus">Видна всем компаниям, зарегистрированным на Find-n-trade</div>
+            </div>
+            <div class="my_ads">
+                <div class="adsleft">
+                    <a href="{% url 'create ad' %}">
+                        <p id="new">Новое<br>объявление<i id="plus" class="fa fa-plus"></i></p>
+                    </a>
+                    <a href="{% url 'active ads' %}">
+                        <p id="active">Активные объявления</p>
+                    </a>
+                </div>
+                <div class="adsright">
+                    <a href="{% url 'archived ads' %}">
+                        <p id="archive">Архивные объявления<i id="folder" class="fa fa-folder"></i></p>
+                    </a>
+                    <a href="#">
+                        <p id="fav">Избранное<i id="heart" class="fa fa-heart"></i></p>
+                    </a>
+                </div>
+            </div>
+            <div class="myresponds">
+                <div class="resptext">
+                    По статистике одно приглашение требует 10 откликов
+                </div>
+                <div class="respbtn">
+                    <a href="{%url 'responds' %}"><p id="resps">Отклики</p></a>
+                    <a href="{%url 'chatbox' %}"><p id="chats">Чаты</p></a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__wrapper">
+                <div class="footer__links">
+                    <div class="footer__links-logo">find-n-trade</div>
+                        
+                    <div class="footer__links__wrapper">
+                        <div class="footer__links-column">
+                            <ul class="footer__links-column__list">
+                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Главное</a></li>
+                                <li class="footer__links-column__list-item"><a href="reviews.html" class="footer__links-column__list-item__link">Блог</a></li>
+                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">О нас</a></li>
+                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">Категории</a></li>
+                                <li class="footer__links-column__list-item"><a href="#partners" class="footer__links-column__list-item__link">Контакты</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-column">
+                            <ul class="footer__links-column__list">
+                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Объявления</a></li>
+                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Реклама на сайте</a></li>
+                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">Условия оказания услуг</a></li>
+                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">Условия использования сайта</a></li>
+                                <li class="footer__links-column__list-item"><a href="#partners" class="footer__links-column__list-item__link">Инвесторам</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer__links-column">
+                            <ul class="footer__links-column__list">
+                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Тех.поддержка</a></li>
+                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">Пользовательское соглашение</a></li>
+                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">FAQ</a></li>
+                            </ul>
+
+                            <div class="footer__links-column__langs">
+                                <div class="footer__links-column__langs-item footer__links-column__langs-item_kz">KAZ</div>
+                                <div class="footer__links-column__langs-item footer__links-column__langs-item_en">ENG</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__social">
+                    <a href="{% url 'index' %}"><div class="footer__social-logo">FIND-N-TRADE</div></a>
+
+                    <div class="footer__social__items">
+                        <a href="https://www.instagram.com/"><img src="{% static 'main/icons/insta.svg' %}" alt="instagram" class="footer__social-item">
+                        <a href="https://www.youtube.com/"><img src="{% static 'main/icons/youtube.svg' %}" alt="youtube" class="footer__social-item">
+                        <a href="https://ru-ru.facebook.com/"><img src="{% static 'main/icons/facebook.svg' %}" alt="facebook" class="footer__social-item">
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash"></div>
+
+            <div class="footer__credit">Ⓒ 2022 Группа компании Find-n-Trade</div>
+        </div>
+    </footer>
+</body>
+{% endblock %}

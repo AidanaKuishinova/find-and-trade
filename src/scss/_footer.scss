@@ -1,0 +1,94 @@
+.footer {
+    background: #84CEEB;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 29px 0;
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__links {
+        &-logo {
+            margin-top: 58px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            color: #FFFFFF;
+        }
+        &__wrapper {
+            margin-top: 20px;
+            display: flex;
+        }
+        &-column {
+            margin-right: 90px;
+            &:last-child {
+                margin-right: 0;
+            }
+            &__list {
+                &-item {
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 20px;
+                    color: #FFFFFF;
+                    margin-bottom: 14px;
+                    &__link {
+                        transition: 0.3s all;
+                        &:hover {
+                            color: #5680E9;
+                        }
+                    }
+                }
+            }
+            &__langs {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+                &-item {
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 20px;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                    transition: 0.3s all;
+                    &:hover {
+                        color: #5680E9;
+                    }
+                }
+            }
+        }
+    }
+    &__social {
+        &-logo {
+            font-family: 'Bebas Neue';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            color: #FFFFFF;
+        }
+        &__items {
+            display: flex;
+            justify-content: space-between;
+        }
+        &-item {
+            object-fit: contain;
+            height: 61px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s all;
+            &:hover {
+                transform: rotate(15deg);
+            }
+        }
+    }
+    &__credit {
+        margin-top: 20px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        color: #FFFFFF;
+        text-align: center;
+    }
+}

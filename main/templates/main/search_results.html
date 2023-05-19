@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Поиск</title>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+
+<body background="images/bg2.png">
+
+    <main>
+      <div class="searchbox">
+        <form class="" action="main.html">
+          <input type="text" class="searchitem" placeholder="Что вы ищете?">
+          <button class="searchimage"><img src="images/search-interface-symbol.png" alt=""></button>
+        </form>
+      </div>
+      <h1 id="searchrestext">Результаты поиска по запросу "клубника"</h1>
+      <div class="search_results">
+        <div class="sort_filter">
+          <div id="sortby" class="dropdown-checklist" tabindex="100">
+            <span class="anchor">Сортировка</span>
+            <div class="bgsortfilter">
+              <ul class="items">
+                <li><label class="labelforsortcheckbox"><input class="sortingoptions" type="checkbox" id="sort1" checked onclick="selectOnlyThis(this.id)"/>   по релевантности<span></span></label></li>
+                <li><label class="labelforsortcheckbox"><input class="sortingoptions" type="checkbox" id="sort2" onclick="selectOnlyThis(this.id)"/>   цена по возрастанию<span></span></label></li>
+                <li><label class="labelforsortcheckbox"><input class="sortingoptions" type="checkbox" id="sort3" onclick="selectOnlyThis(this.id)"/>   цена по убыванию<span></span></label></li>
+                <li><label class="labelforsortcheckbox"><input class="sortingoptions" type="checkbox" id="sort4" onclick="selectOnlyThis(this.id)"/>   название (А-Я)<span></span></label></li>
+                <li><label class="labelforsortcheckbox"><input class="sortingoptions" type="checkbox" id="sort5" onclick="selectOnlyThis(this.id)"/>   название (Я-А)<span></span></label></li>
+                </ul>
+            </div>
+          </div>
+          <br>
+          <div id="filterby" class="dropdown-checklist" tabindex="100">
+            <span class="anchor">Фильтр</span>
+            <div class="bgsortfilter">
+              <ul class="items"><p>Категория</p>
+                <li><label class="container">Категория<input class="sortingoptions" type="checkbox"><span class="checkmark"></span></label></li>
+                <li><label class="container">Категория<input class="sortingoptions" type="checkbox"><span class="checkmark"></span></label></li>
+                <li><label class="container">Категория<input class="sortingoptions" type="checkbox"><span class="checkmark"></span></label></li>
+                <li><label class="container">Категория<input class="sortingoptions"  type="checkbox"><span class="checkmark"></span></label></li>
+              </ul>
+              <ul class="items"><p>Цена</p>
+                <li><label class="container">Цена<input class="sortingoptions" type="checkbox"><span class="checkmark"></span></label></li>
+                <li><label class="container">Цена<input class="sortingoptions" type="checkbox"><span class="checkmark"></span></label></li>
+                <li><label class="container">Цена<input class="sortingoptions" type="checkbox"><span class="checkmark"></span></label></li>
+                <li><label class="container">Цена<input class="sortingoptions"  type="checkbox"><span class="checkmark"></span></label></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="search_items">
+          <div class="search_card_products">
+            <div class="found-item"><div class="found-item-img"><img src="images/blog1.jpeg" alt=""></div><a href="#"><p class="prod_name">Клубника</p></a><p class="prod_price">7000 ₸</p></div>
+            <div class="found-item"><div class="found-item-img"><img src="images/blog1.jpeg" alt=""></div><a href="#"><p class="prod_name">Клубника</p></a><p class="prod_price">7000 ₸</p></div>
+            <div class="found-item"><div class="found-item-img"><img src="images/blog1.jpeg" alt=""></div><a href="#"><p class="prod_name">Клубника</p></a><p class="prod_price">7000 ₸</p></div>
+            <div class="found-item"><div class="found-item-img"><img src="images/blog1.jpeg" alt=""></div><a href="#"><p class="prod_name">Клубника</p></a><p class="prod_price">7000 ₸</p></div>
+          </div>
+        </div>
+      </div>
+<script>
+  var checkList = document.getElementById('sortby');
+  checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+    if (checkList.classList.contains('visible'))
+      checkList.classList.remove('visible');
+    else
+      checkList.classList.add('visible');
+  };
+  function selectOnlyThis(id) {
+      for (var i = 1;i <= 5; i++)
+      {
+          document.getElementById("sort" + i).checked = false;
+      }
+      document.getElementById(id).checked = true;
+  };
+
+  var checkList2 = document.getElementById('filterby');
+  checkList2.getElementsByClassName('anchor')[0].onclick = function(evt) {
+    if (checkList2.classList.contains('visible'))
+      checkList2.classList.remove('visible');
+    else
+      checkList2.classList.add('visible');
+  };
+</script>
+    </main>
+</body>
+</html>
+{% endblock %}

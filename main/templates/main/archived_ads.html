@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %}  <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">  {% endblock %}
+
+{% block content %}
+
+<body background="{% static 'main/images/bg4.png' %}">
+    <main>
+      <h1 id="actarchads">Мои объявления</h1>
+      <div class="ads-sections">
+        <a href="{% url 'active ads'%}"><p class="nav_nonactive">Активные</p></a>
+        <a href="{% url 'archived ads'%}"><p >Архивные</p></a>
+      </div>
+      <div class="adsactive">
+        {% for i in object_list %}
+
+          <div class="card">
+            <div class="ad_image">
+              {% if i.image_link.file is not None     %}
+              <img src="{{i.image_link.url}}" alt="" style="object-fit:cover;
+              object-position: right;
+                 width:250px;
+                 height:250px;
+                 border: solid 1px #CCC">
+              {% else %}
+              <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="object-fit:cover;
+              object-position: right;
+                 width:250px;
+                 height:250px;
+                 border: solid 1px #CCC">
+          
+              {% endif %}
+            </div>
+            <div class="adtext">
+              <h4><b>{{i.title}}</b></h4>
+              <p>{{i.create_date|date:'d/m/Y'}}</p>
+            </div>
+            <div class="ads-actions">
+              <form action="{% url 'active_ad'%}" method="post">
+                <input type="hidden" value="{{i.id}}" name="id">
+                <button><p style="background-color: #35DABA; color:white;">Восстановить</p></button>
+                {% csrf_token %}
+              </form>
+              <form action="{% url 'delete_ad'%}" method="post">
+                <input type="hidden" value="{{i.id}}" name="id">
+                <button><p style="background-color: #FF3E3E; color:white;">Удалить</p></button>
+                {% csrf_token %}
+              </form>
+            </div>
+          </div>
+      {% endfor %}
+
+    </div>
+    <div class="pagination" style="margin-top: 30px;">
+      <div class="pages">
+        {% for page in paginator.page_range %}
+          <a href="?page={{page}}"><p class="{% if page_obj.number == page  %}active_page{% endif %}">{{page}}</p></a>
+        {% endfor %}
+        </div>
+     </main>
+</body>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Категории</title>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+
+<body background="images/bg2.png">
+
+    <main>
+      <div class="searchbox">
+        <form class="" action="main.html">
+          <input type="text" class="searchitem" placeholder="Что вы ищете?">
+          <button class="searchimage"><img src="images/search-interface-symbol.png" alt=""></button>
+        </form>
+      </div>
+      <h1 id="categorytext">Категории</h1>
+      <div class="cat-container">
+        <div class="cat-item"><a href="#"><img class="category_image" src="{% static 'main/icons/categories/cooking.svg' %}" alt=""><p>Кулинария</p></a></div>
+        <div class="cat-item"><a href="#"><img class="category_image" src="images/blog2.jpeg" alt=""><p>Маркетинг</p></a></div>
+        <div class="cat-item"><a href="#"><img class="category_image" src="images/blog3.jpeg" alt=""><p>Кафе и рестораны</p></a></div>
+        <div class="cat-item"><a href="#"><img class="category_image" src="images/blog4.jpeg" alt=""><p>Строительство</p></a></div>
+        <div class="cat-item"><a href="#"><img class="category_image" src="images/blog5.jpeg" alt=""><p>Информационные технологии</p></a></div>
+        <div class="cat-item"><a href="#"><img class="category_image" src="images/blog6.jpeg" alt=""><p>Красота и здоровье</p></a></div>
+        <div class="cat-item"><a href="#"><img class="category_image" src="images/blog7.jpeg" alt=""><p>Мебель</p></a></div>
+
+      </div>
+    </main>
+</body>
+</html>
+{% endblock %}

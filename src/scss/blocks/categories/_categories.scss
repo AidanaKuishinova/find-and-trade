@@ -1,0 +1,111 @@
+.categories__container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    background-image:  url('../icons/categories/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &-search__wrapper{
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1200px;
+        height: 255px;
+        background: rgba(86, 128, 233, 0.7);
+        border-radius: 25px;
+        padding: 60px 40px;
+
+        &-inputs{
+            position: relative;
+        }
+
+        &-input{
+            height: 70px;
+            background: white;
+            border-radius: 30px;
+            border: none;
+            width: 100%;
+            font-size: 22px;
+            color: black;
+            padding-left: 30px;
+
+            &__icon{
+                cursor: pointer;
+                position: absolute;
+                background-image: url('../icons/search.svg');
+                background-repeat: no-repeat;
+                height: 35px;
+                width: 35px;
+                right: 30;
+                top: 17.5;
+            }
+        }
+    }
+    &-heading{
+        font-weight: 500;
+        font-size: 48px;
+        text-align: center;
+        color: #000000;
+        margin: 40px 0;
+    }
+    
+    &-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 35px;
+        justify-content: center;
+        align-self: center;
+        width: 100%;
+        max-width: 1420px;
+        margin-bottom: 100px;
+        &-card{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-position: center;
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: 125%; /* Resize the background image to cover the entire container */
+            &:hover{
+                background-size: 135%;
+            }
+
+            &-name{
+                margin-top: auto;
+                margin-left: 30px;
+                margin-bottom: 40px;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+    }
+    #cooking{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.5)) , url('../icons/categories/cooking.svg');
+    }
+    #marketing{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.5)) , url('../icons/categories/marketing.svg');
+    }
+    #restaurant{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.5)) , url('../icons/categories/restaurant.svg');
+    }
+    #buildings{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.5)) , url('../icons/categories/buildings.svg');
+    }
+    #it{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.5)) , url('../icons/categories/it.svg');
+    }
+    #office{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.5)) , url('../icons/categories/office.svg');
+    }
+    #furniture{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.5)) , url('../icons/categories/furniture.svg');
+    }
+    #health{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.5)) , url('../icons/categories/health.svg');
+    }
+
+}

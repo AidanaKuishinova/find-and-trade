@@ -1,0 +1,86 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Чат поддержка</title>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+
+<body background="images/bg2.png">
+
+    <header>
+
+        <div class="webtitle"><a href="main.html"><img src="images/Find-n-trade.png" alt=""></a></div>
+        <div class="headerright">
+            <a href="#">Категории</a>
+            <a href="#">Блог</a>
+            <a href="#">О нас</a>
+            <a href="#">Контакты</a>
+        </div>
+        <div class="lang-menu">
+            <div class="select-lang">
+                РУС
+            </div>
+            <ul>
+                <li><a href="#">ҚАЗ</a></li>
+                <li><a href="#">ENG</a></li>
+            </ul>
+        </div>
+        <div class="icons">
+            <a href=""><img src="images/location.png" alt=""></a>
+            <a href="#"><img src="images/user.png" alt=""></a>
+        </div>
+
+    </header>
+
+    <main>
+      <div class="support_chat">
+        <div class="chat_podderzhka">
+          <p><b>Чат поддержка</b></p>
+        </div>
+        <div class="messages_support">
+          <div class="user_message">
+            <p>Здравствуйте! Мне нужна помощь</p>
+          </div>
+          <div class="support_message">
+            <p>Здравствуйте, по какому вопросу вы к нам обращаетесь?</p>
+          </div>
+          <div class="user_message">
+            <p>Здравствуйте! Мне нужна помощь</p>
+          </div>
+          <div class="support_message">
+            <p>Здравствуйте, по какому вопросу вы к нам обращаетесь?</p>
+          </div>
+          <div class="user_message">
+            <p>Здравствуйте! Мне нужна помощь</p>
+          </div>
+          <div class="support_message">
+            <p>Здравствуйте, по какому вопросу вы к нам обращаетесь?</p>
+          </div>
+          <div class="user_message">
+            <p>Здравствуйте! Мне нужна помощь</p>
+          </div>
+          <div class="support_message">
+            <p>Здравствуйте, по какому вопросу вы к нам обращаетесь?</p>
+          </div>
+          <div class="user_message">
+            <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+          </div>
+        </div>
+        <br>
+        <div class="chat-input-holder">
+          <textarea class="chat-input"></textarea>
+          <input type="submit" value="Отправить" class="message-send" />
+        </div>
+      </div>
+    </main>
+</body>
+</html>
+{% endblock %}

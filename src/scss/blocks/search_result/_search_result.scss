@@ -1,0 +1,70 @@
+.categories__container{
+    .search__result{
+        &-wrapper{
+            display: flex;
+            align-self: center;
+            width: 1320px;
+            &-sorting {
+                width: 25%;
+                &-form{
+
+                    &__element{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 264px;
+                        height: 43.05px;
+                        background: rgba(86, 128, 233, 0.7);
+                        border-radius: 30px;
+                        text-align: center;
+                        font-size: 18px;
+                        margin-bottom: 20px;
+                        &:last-child{
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+            &-results{
+                display: flex;
+                width: 100%;
+                gap: 30px;
+                max-width: 1000px;
+                flex-wrap: wrap;
+                margin-bottom: 52px;
+                &-item{
+                    cursor: pointer;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 30px 40px;
+                    width: 450px;
+                    height: 350px;
+                    background: #FDFDFD;
+                    border-radius: 30px;
+                    box-sizing: border-box;
+                    transition: all 0.3s ease;
+                    border: 2px solid white;
+                    &-image{
+                        border-radius: 20px;
+                    }
+                    &-description{
+                        margin-top: 10px;
+                        span{
+                            text-align: left;
+                            color: black;
+                            font-size: 24px;
+                        }
+                       
+                    }
+                &:hover{
+                    border: 2px solid rgba(86, 128, 233, 0.7);
+                    transform: translateY(-5px);
+                }
+                }
+            }
+        }
+    }
+
+}

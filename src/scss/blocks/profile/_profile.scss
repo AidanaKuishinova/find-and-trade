@@ -1,0 +1,154 @@
+
+:root {
+    --bs-lightblue: #84CEEB;
+    --bs-blue: #5AB9EA;
+    --bs-gradient_one: linear-gradient(60deg, rgba(104, 201, 201, 0.8724440459777661) 15%, rgba(90, 185, 234, 0.4186625333727241) 49%, rgba(86, 128, 233, 0.7015756986388305) 84%);
+    --bs--gradient_two: linear-gradient(45deg, rgba(255, 255, 255, 0.8724440459777661) 15%, rgba(86, 128, 233, 0.7015756986388305) 84%);
+    --bs--lapisblue: #5680E9;
+    --bs-darkblue: #152243;
+    --bs-lavender: #83A4EF;
+    --bs-green: #81D6CD;
+}
+
+
+.myprofile {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.profile {
+    padding-left: 75px;
+    padding-right: 75px;
+    margin-top: 60;
+    width: 28.3%;
+}
+
+.profile a .btnedit {
+    font-size: 20px;
+    width: fit-content;
+    background-color: var(--bs-blue);
+    color: white;
+    margin: 50px 0px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.profile a .btnedit #penicon {
+    margin: auto;
+    padding: 10px;
+    font-size: 30px;
+}
+
+
+.profile #pic {
+    width: 350px;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.myinfo {
+    margin-top: 40px;
+    width: 56.7%;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mytext .myname {
+    color: var(--bs--lapisblue);
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.mytext .mystatus {
+    margin-top: 30px;
+    color: var(--bs-darkblue);
+    font-weight: 200;
+    font-size: 20px;
+}
+
+.my_ads {
+    display: flex;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.adsleft p {
+    background-color: var(--bs-lavender);
+    color: #fff;
+    border-radius: 20px;
+    width: max-content;
+    margin: 0 0 30px 0;
+}
+
+.adsleft #new {
+    font-size: 30px;
+    padding: 30px;
+}
+
+.adsleft #new #plus {
+    margin: auto;
+    font-size: 50px;
+    font-weight: lighter;
+    padding-left: 50px;
+}
+
+.adsleft #active {
+    font-size: 25px;
+    padding: 25px;
+}
+
+.adsright {
+    margin-bottom: auto;
+    margin-left: 30px;
+
+}
+
+.adsright p {
+    background-color: var(--bs-blue);
+    color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+    width: max-content;
+    padding: 10px;
+    margin: 0px 0 20px 0;
+}
+
+.adsright i {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.myresponds {
+    background-color: var(--bs-green);
+    color: #fff;
+    display: inline-flex;
+    padding: 20px 50px;
+    border-radius: 20px;
+    width: 75%;
+}
+
+.myresponds .resptext {
+    width: 60%;
+    margin-top:auto;
+    margin-bottom: auto;
+    font-size: 25px;
+}
+
+.respbtn p {
+    background-color: #fff;
+    color: var(--bs-green);
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 10px;
+    margin: 20px;
+    width: fit-content;
+}
+
+/* ! --- MY PAGE --- ! */

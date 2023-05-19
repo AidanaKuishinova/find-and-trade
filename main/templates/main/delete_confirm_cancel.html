@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Архивные объявления</title>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="css/style.css">
+   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+   <link rel="stylesheet" href="">
+   <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+</head>
+
+<body background="images/bg2.png">
+    <main>
+      <h1 id="actarchads">Мои объявления</h1>
+      <div class="confirm_delete">
+        <h4>Вы уверены, что хотите удалить это объявление?</h4>
+        <p>После удаления, восстановить объявление невозможно</p>
+        <div class="confirm_delete_buttons">
+          <a href="#"><button style="background-color: #FF3E3E;">Удалить</button></a>
+          <a href="archived_ads.html"><button style="background-color: #35DABA;">Отмена</button></a> 
+        </div>
+      </div>
+    </main>
+</body>
+</html>

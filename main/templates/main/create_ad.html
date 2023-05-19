@@ -1,0 +1,84 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %}  <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">  {% endblock %}
+
+{% block content %}
+
+<body background="{% static 'main/images/bg4.png' %}">
+    <main>
+        <h1 id="newad">Новое объявление</h1>
+        <form action="" method="POST" class="newadouterdiv" enctype="multipart/form-data">
+          {% csrf_token %}
+          <p id="required">*обязательно</p>
+          <div class="newadleft">
+            <div class="labeloneline">
+              <label class="text-field__label" for="name">Название</label>
+              <label style="color:#FF3E3E" class="text-field__label" for="name">*
+                    {% if form.errors %}
+                        {{form.errors}}
+                    {% endif %}
+            </label>
+            </div>
+            <select name="user" required="" id="id_user" hidden>
+                <option value="{{user.id}}" selected>{{ user.email }}</option>
+              
+              </select>
+            {{form.title}}
+            <div class="labeloneline">
+              <label class="text-field__label" for="companyname">Название компании</label>
+            </div>
+            {{form.company_name}}
+
+            <div class="labeloneline">
+              <label class="text-field__label" for="companyname">Описание</label>
+              <label style="color:#FF3E3E" class="text-field__label" for="description">*</label>
+            </div>
+            {{form.description}}
+
+          </div>
+          <div class="newadright">
+            <div class="labeloneline">
+              <label class="text-field__label" for="name">Фотографии/вложения</label>
+              <div class="photos">
+                <div class="photo" ><img class="centeredcamera" id="photo1" src="{% static 'main/images/camerapng.png' %}" alt=""></div>
+              </div>
+            </div>
+            <div class="file-upload">
+              <label for="file-input">
+                Прикрепить файл  <img src="images/attach.png">
+              </label>
+              {{form.image_link}}
+            </div>
+            <div class="labeloneline">
+              <label class="text-field__label" for="name">Цена</label>
+              <label style="color:#FF3E3E" class="text-field__label" for="price">*</label>
+            </div>
+            {{form.cost}}
+
+          </div>
+        <button id="publishsubmit" type="submit">Опубликовать</button>
+        </form>
+      </div>
+    </main>
+</body>
+      <script>
+        let image = document.querySelector('#photo1');
+        let photos = document.querySelector('.photos');
+        const input = document.querySelector('input[type="file"]');
+        input.addEventListener('change', () => {
+            let photos_html = '';
+            for (let file of input.files) {
+              url = URL.createObjectURL(file)
+              photos_html += `
+              <div class="photo" ><img class="centeredcamera" id="photo1" src="${url}" alt="" style="object-fit:cover;
+              object-position: right;
+                 width:130px;
+                 height:130px;
+                 border: solid 1px #CCC"></div>
+              `
+            }
+            photos.innerHTML = photos_html;
+        })
+      </script>
+{% endblock %}

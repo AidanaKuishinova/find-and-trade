@@ -1,0 +1,146 @@
+.long {
+    min-height: 4705px;
+    background: url("../img/long__bg.jpg") center center/cover no-repeat;
+    padding: 120px 0;
+    &__find {
+        margin-top: 224px;
+        display: flex;
+        justify-content: space-between;
+        &:first-child {
+            margin-top: 0;
+        }
+        &-img {
+            object-fit: contain;
+            height: 920px;
+            width: 650px;
+        }
+        &__descr {
+            &-header {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 80px;
+                color: #000000;
+            }
+            &-subheader {
+                margin-top: 83px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 48px;
+                line-height: 58px;
+                color: #000000;
+            }
+        }
+    }
+    &__reviews {
+        margin-top: 256px;
+        &__header {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 96px;
+            color: #000000;
+            text-align: center;
+        }
+        &__subheader {
+            margin-top: 38px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 36px;
+            color: #000000;
+            text-align: center;
+        }
+        &__items {
+            margin-top: 66px;
+            display: flex;
+            justify-content: space-between;
+            &-item {
+                width: 350px;
+                background: #FFFFFF;
+                border: 1px solid #BDF2E8;
+                border-radius: 15px;
+                height: 350px;
+                padding: 46px 50px 33px 21px;
+                &__text {
+                    font-family: 'Bebas Neue', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 29px;
+                    color: #000000;
+                }
+                &__stars {
+                    margin-top: 19px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    &-star {
+                        height: 30px;
+                        width: 30px;
+                        object-fit: contain;
+                        margin-right: 8px;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+                &__user {
+                    margin-top: 19px;
+                    font-family: 'Bebas Neue', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24px;
+                    color: #000000;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    &__blog {
+        margin-top: 285px;
+        &__header {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 64px;
+            text-align: center;
+            color: #000000;
+        }
+        &__items {
+            margin-top: 113px;
+            display: flex;
+            justify-content: space-between;
+            &-item {
+                &__article {
+                    border-radius: 50px;
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 40px;
+                    line-height: 48px;
+                    color: #FFFFFF;
+                    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+                    cursor: pointer;
+                    transition: 0.3s all;
+                    &:hover {
+                        border-radius: 20%;
+                    }
+                    &_short {
+                        width: 728px;
+                        height: 432px;
+                        background: url('../img/blog__bg_2.jpg') center center/cover no-repeat;
+                        padding: 308px 78px 35px 39px;
+                    }
+                    &_long {
+                        width: 583px;
+                        height: 846px;
+                        background: url('../img/blog__bg_1.jpg') center center/cover no-repeat;
+                        padding: 720px 58px 38px 68px;
+                    }
+                }
+            }
+        }
+    }
+}
