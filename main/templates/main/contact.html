@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Главная</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+</head>
+
+<body>
+
+
+    <main class="contact-us">
+
+        <div class="contact">
+            <div class="contact-text">
+                <span>Хотите стать нашим партнером?</span>
+                <span>Столкнулись с проблемой?</span>
+                <span>Имеются жалобы или предложения?</span>
+            </div>
+            <div class="contact-form">
+                <h3>Заполните форму, и мы свяжемся с вами</h3>
+                <div class="con-inp">
+                    <span>Имя Фамилия</span>
+                    <input type="text" class="cu-name">
+                </div>
+                <div class="con-inp">
+                    <span>Эл.почта</span>
+                    <input type="text" class="cu-mail">
+                </div>
+                <div class="con-inp" >
+                    <span>Ваше сообщение</span>
+                    <input type="text" class="cu-msg" id="longtext">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
+{% endblock %}

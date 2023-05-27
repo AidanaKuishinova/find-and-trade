@@ -1,0 +1,300 @@
+{% load static %}
+<html>
+<head>
+    <title>
+        CHAT
+    </title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body >
+
+	{% if user.email == 'admin@gmail.com' %}
+
+  <div class="chat">
+    <div class="users_list">
+      <div class="users_list_1">
+		{% for thread in Threads %}
+        <div class="user_info  {% if forloop.first %}active{% endif %} contact-li " chat-id="chat_{{ thread.id }}">
+          <div class="chatbox_message_profile">
+            <img src="{% if thread.first_person.username == 'Yasmina' %} https://i.pinimg.com/originals/48/f8/27/48f8272a154f6bc006a88ffb90b648f6.jpg {% elif thread.first_person.username == 'Dana'  %}https://i.pinimg.com/originals/50/68/37/50683788683edaeb5ca24ec8a75f4fd8.jpg {% elif thread.first_person.username == 'Aidana'  %} http://risovach.ru/upload/2015/09/generator/aleks_92036717_orig_.jpg {% else %} http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png{% endif %}" alt="" class="chatbox_message_image">
+            <div>
+              <h4 class="chatbox_message_name">{% if thread.first_person == user %}
+				{{ thread.second_person.username }}
+			{% else %}
+				{{ thread.first_person.username }}
+			{% endif %}</h4>
+            </div>
+          </div>
+        </div>
+		{% endfor %}
+        
+      </div>
+    </div>
+
+  	<div class="chatbox_wrapper">
+		{% for thread in Threads %}
+  			<div class="chatbox_message_wrapper {% if forloop.first %}hide is_active{% else %}hide{% endif %}" chat-id="chat_{{ thread.id }}" other-user-id="
+			  {% if thread.first_person == user %}
+				  {{ thread.second_person.id }}
+			  {% else %}
+				  {{ thread.first_person.id }}
+			  {% endif %}
+		  ">
+  				<div class="chatbox_message_header">
+  					<div class="chatbox_message_profile">
+					
+  						<img src="{% if thread.first_person.username == 'Yasmina' %} https://i.pinimg.com/originals/48/f8/27/48f8272a154f6bc006a88ffb90b648f6.jpg {% elif thread.first_person.username == 'Dana'  %}https://i.pinimg.com/originals/50/68/37/50683788683edaeb5ca24ec8a75f4fd8.jpg {% elif thread.first_person.username == 'Aidana'  %} http://risovach.ru/upload/2015/09/generator/aleks_92036717_orig_.jpg {% else %} http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png{% endif %}" alt="" class="chatbox_message_image">
+  						<div>
+  							<h4 class="chatbox_message_name">   {% if thread.first_person == user %}
+								<span>{{ thread.second_person.username }}</span>
+						{% else %}
+							<span> {{ thread.first_person.username }}</span>
+						{% endif %}
+
+						</h4>
+  							<p class="chatbox_message_status">{{ thread.chatmessage_thread.all.count }} сообщений</p>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="chatbox_message_content msg_card_body" id="msg_card_body">
+  					{% for chat in thread.chatmessage_thread.all %}
+                                  {% if chat.user == user %}
+						<div class="chatbox_message_item sent">
+						<span class="chatbox_message_item_text">
+							{{ chat.message }}
+						</span>
+						<span class="chatbox_message_item_time">{{ chat.timestamp|date:"d D" }}, {{ chat.timestamp|time:"H:i" }}</span>
+					</div>
+
+                                  {% else %}
+                              	<div class="chatbox_message_item received">
+						<span class="chatbox_message_item_text">
+														{{ chat.message }}
+
+						</span>
+						<span class="chatbox_message_item_time">{{ chat.timestamp|date:"d D" }}, {{ chat.timestamp|time:"H:i" }}</span>
+					</div>
+                                  {% endif %}
+                              {% endfor %}
+  				</div>
+
+  			</div>
+			  {% endfor %}
+			  <div class="chatbox_message_bottom">
+				<form action="#" class="chatbox_message_form" id="send-message-form">
+					<input id="chatbox-message-input" rows="1" placeholder="Введите сообщение..." class="chatbox_message_input">
+					<button type="submit" class="chatbox_message_submit"><i class='bx bx-send' ></i></button>
+				</form>
+			</div>
+  		</div>
+{% else %}
+Только Админ может заходить на эту страничку
+
+	{% endif %}
+
+		  {% if user.is_authenticated %}
+  <input type="hidden" id="logged-in-user" value="{{ user.id }}">
+{% endif %}
+    </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+const textarea = document.querySelector('.chatbox_message_input')
+const chatboxForm = document.querySelector('.chatbox_message_form')
+
+textarea.addEventListener('input', function () {
+	let line = textarea.value.split('\n').length
+
+	if(textarea.rows < 6 || line < 6) {
+		textarea.rows = line
+	}
+
+	if(textarea.rows > 1) {
+		chatboxForm.style.alignItems = 'flex-end'
+	} else {
+		chatboxForm.style.alignItems = 'center'
+	}
+})
+
+// CHATBOX MESSAGE
+const chatboxMessageWrapper = document.querySelector('.chatbox_message_content')
+const chatboxNoMessage = document.querySelector('.chatbox_message_no_message')
+// chatboxForm.addEventListener('submit', function (e) {
+// 	e.preventDefault()
+// 	if(isValid(textarea.value)) {
+// 		writeMessage()
+// 		setTimeout(autoReply, 1000)
+// 	}
+// })
+
+function addZero(num) {
+	return num < 10 ? '0'+num : num
+}
+
+// function writeMessage() {
+// 	const today = new Date()
+// 	let message = `
+// 		<div class="chatbox_message_item sent">
+// 			<span class="chatbox_message_item_text">
+// 				${textarea.value.trim().replace(/\n/g, '<br>\n')}
+// 			</span>
+// 			<span class="chatbox_message_item_time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
+// 		</div>
+// 	`
+// 	chatboxMessageWrapper.insertAdjacentHTML('beforeend', message)
+// 	chatboxForm.style.alignItems = 'center'
+// 	textarea.rows = 1
+// 	textarea.focus()
+// 	textarea.value = ''
+// 	chatboxNoMessage.style.display = 'none'
+// 	scrollBottom()
+// }
+
+// function autoReply() {
+// 	const today = new Date()
+// 	let message = `
+// 		<div class="chatbox_message_item received">
+// 			<span class="chatbox_message_item_text">
+// 				Спасибо за обращение в магазин косметики FaceIt! Мы обязательно вам ответим!
+// 			</span>
+// 			<span class="chatbox_message_item_time">${addZero(today.getHours())}:${addZero(today.getMinutes())}</span>
+// 		</div>
+// 	`
+// 	chatboxMessageWrapper.insertAdjacentHTML('beforeend', message)
+// 	scrollBottom()
+// }
+
+function scrollBottom() {
+	chatboxMessageWrapper.scrollTo(0, chatboxMessageWrapper.scrollHeight)
+}
+
+function isValid(value) {
+	let text = value.replace(/\n/g, '')
+	text = text.replace(/\s/g, '')
+
+	return text.length > 0
+}
+
+
+let input_message = $('#chatbox-message-input')
+    let message_body = $('.msg_card_body')
+    let send_message_form = $('#send-message-form')
+    const USER_ID = $('#logged-in-user').val()
+
+    let loc = window.location
+    let wsStart = 'ws://'
+
+    if(loc.protocol === 'https') {
+    wsStart = 'wss://'
+    }
+    let endpoint = wsStart + loc.host + "/chat/"
+    console.log(endpoint)
+    var socket = new WebSocket(endpoint)
+
+    socket.onopen = async function(e){
+    console.log('open', e)
+    send_message_form.on('submit', function (e){
+      e.preventDefault()
+      let message = input_message.val()
+      let send_to = get_active_other_user_id()
+      let thread_id = get_active_thread_id()
+
+      let data = {
+          'message': message,
+          'sent_by': USER_ID,
+          'send_to': send_to,
+          'thread_id': thread_id
+      }
+      data = JSON.stringify(data)
+      console.log(data)
+      socket.send(data)
+      $(this)[0].reset()
+    })
+    }
+
+    socket.onmessage = async function(e){
+    console.log('message', e)
+    let data = JSON.parse(e.data)
+    let message = data['message']
+    let sent_by_id = data['sent_by']
+    let thread_id = data['thread_id']
+    newMessage(message, sent_by_id, thread_id)
+    }
+
+    socket.onerror = async function(e){
+    console.log('error', e)
+    }
+
+    socket.onclose = async function(e){
+    console.log('close', e)
+    }
+
+	function newMessage(message, sent_by_id, thread_id) {
+if ($.trim(message) === '') {
+return false;
+}
+let message_element;
+let chat_id = 'chat_' + thread_id
+
+
+
+if(sent_by_id == USER_ID){
+
+
+message_element = `
+
+						<div class="chatbox_message_item sent">
+						<span class="chatbox_message_item_text">
+							${message}
+						</span>
+						<span class="chatbox_message_item_time">{{ chat.timestamp|date:"d D" }}Сейчас {{ chat.timestamp|time:"H:i" }}</span>
+					</div>
+
+
+`
+}
+else{
+message_element = `    	<div class="chatbox_message_item received">
+						<span class="chatbox_message_item_text">
+							${message}
+
+						</span>
+						<span class="chatbox_message_item_time">{{ chat.timestamp|date:"d D" }}Сейчас {{ chat.timestamp|time:"H:i" }}</span>
+					</div>
+  `}
+
+let message_body = $('.chatbox_message_wrapper[chat-id="' + chat_id + '"] .msg_card_body')
+console.log("putted")
+message_body.append($(message_element))
+message_body.animate({
+  scrollTop: $(document).height()
+}, 100);
+input_message.val(null);
+}
+
+
+$('.contact-li').on('click', function (){
+    $('.contacts .actiive').removeClass('active')
+    $(this).addClass('active')
+
+    // message wrappers
+    let chat_id = $(this).attr('chat-id')
+    $('.chatbox_message_wrapper.is_active').removeClass('is_active')
+    $('.chatbox_message_wrapper[chat-id="' + chat_id +'"]').addClass('is_active')
+
+    })
+
+function get_active_other_user_id(){
+    let other_user_id = $('.chatbox_message_wrapper.is_active').attr('other-user-id')
+    other_user_id = $.trim(other_user_id)
+    return other_user_id
+    }
+
+    function get_active_thread_id(){
+    let chat_id = $('.chatbox_message_wrapper.is_active').attr('chat-id')
+    let thread_id = chat_id.replace('chat_', '')
+    return thread_id
+    }
+
+</script>

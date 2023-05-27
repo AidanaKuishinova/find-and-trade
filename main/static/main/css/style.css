@@ -940,8 +940,8 @@ nav {
 .categories__container-search__wrapper {
   margin: 0 auto;
   width: 100%;
-  max-width: 1200px;
-  height: 255px;
+  max-width: 902px;
+  height: 200px;
   background: rgba(90, 185, 234, 0.4);
   border-radius: 25px;
   padding: 60px 40px;
@@ -971,7 +971,7 @@ nav {
 }
 .categories__container-heading {
   font-weight: 500;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: bold;
   text-align: center;
   color: #072A82;
@@ -1007,7 +1007,7 @@ nav {
   margin-top: auto;
   margin-left: 30px;
   margin-bottom: 40px;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
 }
 .categories__container #cooking {
@@ -1298,7 +1298,7 @@ nav {
   background-color: var(--bs-blue);
   color: white;
   margin: 50px 0px;
-  padding: 10px 20px;
+  padding: 10px 40px;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -1381,7 +1381,7 @@ nav {
   font-size: 20px;
   border-radius: 10px;
   width: max-content;
-  padding: 10px;
+  padding: 20px;
   margin: 0px 0 20px 0;
 }
 
@@ -1394,10 +1394,10 @@ nav {
   background-color: var(--bs-green);
   color: #fff;
   display: inline-flex;
-  padding: 20px 50px;
+  padding: 10px 60px;
   border-radius: 20px;
-  width: 75%;
-  margin-bottom: 15px;
+  width: 70%;
+  margin-bottom: 50px;
 }
 
 .myresponds .resptext {
@@ -1414,7 +1414,8 @@ nav {
   font-size: 25px;
   padding: 10px;
   margin: 20px;
-  width: fit-content;
+  width: 150px;
+  text-align: center;
 }
 
 /* ! --- MY PAGE --- ! */

@@ -43,6 +43,13 @@ urlpatterns = [
     path('favs/', views.FavouriteAdView.as_view(), name='favs'),
     path('favs_delete/', views.favs_delete, name='favs_delete'),
     path('about_us/', views.about_us, name='about_us'),
+
+    path('chat/', views.chatt, name='chat'),
+    path('contact/', views.contact, name='contact'),
+    path('loading/', views.loading, name='loading'),
+    path('payment/', views.payment, name='payment'),
+    path('tariff/', views.tariff, name='tariff'),
+    path('termscond/', views.termscond, name='termscond'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

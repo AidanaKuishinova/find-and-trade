@@ -19,211 +19,78 @@
     <main class=chatpage>
 
         <div class="chatcont">
+            <input type="hidden" id="logged-in-user" value="{{request.user.id}}">
             <div class="chatleft">
+                {% for thread in Threads %}
                 <a href="#">
-                    <div class="chatlist" id="op">
+                    <div class="chatlist"  chat-id="chat_{{ thread.id }}" >
                         <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
+                            {% if thread.first_person.profile.image_link.file is not None %}
+                              <img src="{{ thread.first_person.profile.image_link.url}}" alt="" class="cover">
+                            {% else %}
+                                 <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" class="cover">
+                            {% endif %}
+
                         </div>
                         <div class="chatinfo">
+                        {% with thread.chatmessage_thread.all.last as chat %}
+                            {{ chat.key }}
                             <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
+                                <h4>{% if thread.first_person == user %}
+				{{ thread.second_person.email }}
+			{% else %}
+				{{ thread.first_person.email }}
+			{% endif %}</h4>
+                                <p class="time">{{ chat.timestamp|date:"d D" }}, {{ chat.timestamp|time:"H:i" }}</p>
                             </div>
                             <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
+                                <p>{{ chat.message }}</p>
                             </div>
+                        {% endwith %}
+
                         </div>
                     </div>
                 </a>
-                <a href="#">
-                    <div class="chatlist" id="unop">
-                        <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
-                        </div>
-                        <div class="chatinfo">
-                            <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
-                            </div>
-                            <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><a href="#">
-                    <div class="chatlist" id="unop">
-                        <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
-                        </div>
-                        <div class="chatinfo">
-                            <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
-                            </div>
-                            <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><a href="#">
-                    <div class="chatlist" id="unop">
-                        <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
-                        </div>
-                        <div class="chatinfo">
-                            <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
-                            </div>
-                            <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><a href="#">
-                    <div class="chatlist" id="unop">
-                        <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
-                        </div>
-                        <div class="chatinfo">
-                            <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
-                            </div>
-                            <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><a href="#">
-                    <div class="chatlist" id="unop">
-                        <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
-                        </div>
-                        <div class="chatinfo">
-                            <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
-                            </div>
-                            <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><a href="#">
-                    <div class="chatlist" id="unop">
-                        <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
-                        </div>
-                        <div class="chatinfo">
-                            <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
-                            </div>
-                            <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><a href="#">
-                    <div class="chatlist" id="unop">
-                        <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
-                        </div>
-                        <div class="chatinfo">
-                            <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
-                            </div>
-                            <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><a href="#">
-                    <div class="chatlist" id="unop">
-                        <div class="chatimg">
-                            <img src="images/businesswoman.jpeg" class="cover" alt="">
-                        </div>
-                        <div class="chatinfo">
-                            <div class="listhead">
-                                <h4>User User</h4>
-                                <p class="time">11:45</p>
-                            </div>
-                            <div class="chatmsg">
-                                <p>Lorem ipsum dolor sit amet, consectetur </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                {% endfor %}
+
+
 
             </div>
-
-            <div class="chatright">
+            {% for thread in Threads %}
+            <div class="chatright" chat-id="chat_{{ thread.id }}" other-user-id="
+			  {% if thread.first_person == user %}
+				  {{ thread.second_person.id }}
+			  {% else %}
+				  {{ thread.first_person.id }}
+			  {% endif %}">
                 <div class="chathead">
-                    <a href="#" color=""><h4>User User<br><span>в сети</span></h4></a>
+                    <a href="#" color=""><h4>{% if thread.first_person == user %}
+                        {{ thread.second_person.email }}
+                    {% else %}
+                        {{ thread.first_person.email }}
+                    {% endif %}<br><span>в сети</span></h4></a>
                 </div>
                 <div class="chatbox">
-                    <a>
-                        <div class="message my_message">
-                            <p>Hi<br><span>12:01</span>
-                            </p>
-                        </div>
-                    </a>
-                    <div class="message my_message">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-                            facilisis.<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message oth_msg">
-                        <p>Hi<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message oth_msg">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-                            facilisis.<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message oth_msg">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-                            facilisis.<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message my_message">
-                        <p>Bye<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message my_message">
-                        <p>Hi<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message my_message">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-                            facilisis.<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message oth_msg">
-                        <p>Hi<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message oth_msg">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-                            facilisis.<br><span>12:01</span>
-                        </p>
-                    </div>
-                    <div class="message oth_msg">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-                            facilisis.<br><span>12:01</span>
-                        </p>
-                    </div>
+                    {% for chat in thread.chatmessage_thread.all %}
+                        {% if chat.user == user %}
+                            <div class="message my_message">
+                                <p>{{ chat.message }}<br><span>{{ chat.timestamp|date:"d D" }}, {{ chat.timestamp|time:"H:i" }}</span></p>
+                            </div>
+                        {% else %}
+                           <div class="message oth_msg">
+                                <p>{{ chat.message }}<br><span>{{ chat.timestamp|date:"d D" }}, {{ chat.timestamp|time:"H:i" }}</span></p>
+                           </div>
+                        {% endif %}
+                    {% endfor %}
+
                 </div>
-                <div class="chatbox_input">
+                <form action="#" id="message_input_form" class="chatbox_input">
                     <a href="#"><i class="fa fa-file" style="font-size:20px;color:white;"></i></a>
-                    <input type="text" name="" id="" placeholder="Написать сообщение">
+                    <input type="text" name="" id="message_input" placeholder="Написать сообщение">
                     <a href="#"><i class="fa fa-send" style="font-size:20px;color:white;"></i></a>
-                </div>
+                </form>
             </div>
+            {% endfor %}
         </div>
 
     </main>
@@ -286,4 +153,179 @@
         </div>
     </footer>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+const textarea = document.querySelector('#message_input')
+const chatboxForm = document.querySelector('#message_input_form')
+
+textarea.addEventListener('input', function () {
+	let line = textarea.value.split('\n').length
+
+	if(textarea.rows < 6 || line < 6) {
+		textarea.rows = line
+	}
+
+	if(textarea.rows > 1) {
+		chatboxForm.style.alignItems = 'flex-end'
+	} else {
+		chatboxForm.style.alignItems = 'center'
+	}
+})
+
+// CHATBOX MESSAGE
+const chatboxMessageWrapper = document.querySelector('.chatbox')
+const chatboxNoMessage = document.querySelector('.chatbox_message_no_message')
+
+
+function addZero(num) {
+	return num < 10 ? '0'+num : num
+}
+
+
+function scrollBottom() {
+	chatboxMessageWrapper.scrollTo(0, chatboxMessageWrapper.scrollHeight)
+}
+
+function isValid(value) {
+	let text = value.replace(/\n/g, '')
+	text = text.replace(/\s/g, '')
+
+	return text.length > 0
+}
+
+function getCurrentTime(){
+    // Получаем текущую дату и время
+    var currentDate = new Date();
+
+    // Массивы с названиями дней недели и месяцев
+    var daysOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+    var months = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+
+    // Получаем значения дня недели, дня месяца, месяца, часа и минут
+    var dayOfWeek = daysOfWeek[currentDate.getDay()];
+    var dayOfMonth = currentDate.getDate();
+    var month = months[currentDate.getMonth()];
+    var hours = currentDate.getHours();
+    var minutes = currentDate.getMinutes();
+
+    // Приводим значения часов и минут к формату с ведущим нулем, если они меньше 10
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    // Формируем строку с отформатированным временем
+    var formattedTime = dayOfMonth + ' ' + dayOfWeek + ', ' + hours + ':' + minutes;
+    return formattedTime;
+}
+
+
+let input_message = $('#message_input')
+    let message_body = $('.chatbox')
+    let send_message_form = $('#message_input_form')
+    const USER_ID = $('#logged-in-user').val()
+
+    let loc = window.location
+    let wsStart = 'ws://'
+
+    if(loc.protocol === 'https') {
+        wsStart = 'wss://'
+    }
+
+    let endpoint = wsStart + loc.host + "/chat/"
+
+    console.log(endpoint)
+    
+    var socket = new WebSocket(endpoint)
+
+    socket.onopen = async function(e){
+    console.log('open', e)
+    send_message_form.on('submit', function (e){
+      e.preventDefault()
+      let message = input_message.val()
+      let send_to = get_active_other_user_id()
+      let thread_id = get_active_thread_id()
+
+      let data = {
+          'message': message,
+          'sent_by': USER_ID,
+          'send_to': send_to,
+          'thread_id': thread_id
+      }
+      data = JSON.stringify(data)
+      console.log(data)
+      socket.send(data)
+      $(this)[0].reset()
+    })
+    }
+
+    socket.onmessage = async function(e){
+        console.log('message', e)
+        let data = JSON.parse(e.data)
+        let message = data['message']
+        let sent_by_id = data['sent_by']
+        let thread_id = data['thread_id']
+        newMessage(message, sent_by_id, thread_id)
+    }
+
+    socket.onerror = async function(e){
+        console.log('error', e)
+    }
+
+    socket.onclose = async function(e){
+        console.log('close', e)
+    }
+
+	function newMessage(message, sent_by_id, thread_id) {
+        if ($.trim(message) === '') {
+            return false;
+        }
+        let message_element;
+        let chat_id = 'chat_' + thread_id
+
+
+        currentTime = getCurrentTime();
+        if(sent_by_id == USER_ID){
+            message_element = ` <div class="message my_message">
+                                    <p>${message}<br><span>${currentTime}</span></p>
+                                </div>`
+        } else{
+            message_element = ` <div class="message oth_msg">
+                                    <p>${message}<br><span>${currentTime}</span></p>
+                                </div>`
+        }
+
+        let message_body = $('.chatright[chat-id="' + chat_id + '"] .chatbox')
+        console.log("putted")
+        message_body.append($(message_element))
+        message_body.animate({
+        scrollTop: $(document).height()
+        }, 100);
+        input_message.val(null);
+    }
+
+
+$('.chatlist').on('click', function (){
+    console.log(this)
+    $('.contacts .actiive').removeClass('active')
+    $(this).addClass('active')
+
+    // message wrappers
+    let chat_id = $(this).attr('chat-id')
+    $('.chatright.is_active').removeClass('is_active')
+    $('.chatright[chat-id="' + chat_id +'"]').addClass('is_active')
+
+    })
+
+function get_active_other_user_id(){
+    let other_user_id = $('.chatright.is_active').attr('other-user-id')
+    other_user_id = $.trim(other_user_id)
+    return other_user_id
+    }
+
+function get_active_thread_id(){
+    let chat_id = $('.chatright.is_active').attr('chat-id')
+    let thread_id = chat_id.replace('chat_', '')
+    return thread_id
+}
+
+</script>
 {% endblock %}

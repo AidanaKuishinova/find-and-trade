@@ -10,11 +10,35 @@ from django.db.models import Q
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import FavoriteAd
+from chat.models import Thread
 
 # Create your views here.
 def index(request):
     return render(request, 'main/index.html', {})
 
+
+def chatt(request):
+    users = CustomUser.objects.all()
+    for user in users:
+        if request.user != user:
+            try:
+                thread = Thread.objects.get(first_person=request.user, second_person=user)
+                print(thread)
+            except:
+                try:
+                    thread = Thread(first_person=request.user, second_person=user)
+                    thread2 = Thread.objects.get(first_person=user, second_person=request.user)
+                except Exception as e:
+                    print(e)
+                    thread.save()
+                    pass
+                pass
+    threads = Thread.objects.by_user(user=request.user).prefetch_related('chatmessage_thread').order_by('timestamp')
+    print(threads, "THREADS")
+    context = {
+        'Threads':threads
+    }
+    return render(request, "main/admin chat.html",context)
 
 def register_view(request):
     if request.method == "POST":
@@ -64,6 +88,7 @@ class ProfileUpdateView(MultiModelFormView, UpdateView):
         return ctx
 
     def forms_valid(self, forms):
+        print(forms)
         custom_user = forms['custom_user_form'].save(commit=True)
         profile = forms['profile_form'].save(commit=True)
         custom_user.profile = profile
@@ -237,7 +262,27 @@ def offers(request):
 
 
 def chatbox(request):
-    return render(request, 'main/chatbox.html', {})
+    users = CustomUser.objects.all()
+    for user in users:
+        if request.user != user:
+            try:
+                thread = Thread.objects.get(first_person=request.user, second_person=user)
+                print(thread)
+            except:
+                try:
+                    thread = Thread(first_person=request.user, second_person=user)
+                    thread2 = Thread.objects.get(first_person=user, second_person=request.user)
+                except Exception as e:
+                    print(e)
+                    thread.save()
+                    pass
+                pass
+    threads = Thread.objects.by_user(user=request.user).prefetch_related('chatmessage_thread').order_by('timestamp')
+    print(threads, "THREADS")
+    context = {
+        'Threads': threads
+    }
+    return render(request, 'main/chatbox.html', context)
 
 
 def forgot1(request):
@@ -276,6 +321,21 @@ def support_chat(request):
 
 def favs(request):
     return render(request, 'main/favs.html', {})
+
+def contact(request):
+    return render(request, 'main/contact.html', {})
+
+def loading(request):
+    return render(request, 'main/loading.html', {})
+
+def payment(request):
+    return render(request, 'main/payment.html', {})
+
+def tariff(request):
+    return render(request, 'main/tariff.html', {})
+
+def termscond(request):
+    return render(request, 'main/termscond.html', {})
 
 def delete_photo(request):
     print(request.user)

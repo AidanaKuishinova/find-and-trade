@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Главная</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+</head>
+
+<body>
+
+    <main class="pricing">
+
+        <div class="tariffs">
+            <div class="card-sh1">
+                <ul>
+                    <li class="pack" id="startpack">"СТАРТ"</li>
+                    <li id="packstart" class="pricetag">29 900 &#8376;</li>
+                    <li class="btm-bar">Подписка на 2 недели</li>
+                    <li class="btm-bar">3 объявления</li>
+                    <li class="btm-bar">Доступ к резюме</li>
+                    <li>
+                        <button class="pricebtn">Приобрести</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-active">
+                <ul>
+                    <li class="pack" id="standpack">"СТАНДАРТ"</li>
+                    <li id="packstandart" class="pricetag">49 900 &#8376;</li>
+                    <li class="btm-bar">Подписка на 1 месяц</li>
+                    <li class="btm-bar">7 объявлений</li>
+                    <li class="btm-bar">Чат-поддержка</li>
+                    <li class="btm-bar">Доступ к резюме</li>
+                    <li>
+                        <button id="stnbtn" class="pricebtn">Приобрести</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-sh2">
+                <ul>
+                    <li class="pack" id="prempack">"ПРЕМИУМ"</li>
+                    <li id="packpremium" class="pricetag">89 900 &#8376;</li>
+                    <li class="btm-bar">Подписка на 1 год</li>
+                    <li class="btm-bar">от 10 объявлений</li>
+                    <li class="btm-bar">Доступ к резюме</li>
+                    <li class="btm-bar">Премиум дизайн</li>
+                    <li>
+                        <button class="pricebtn">Приобрести</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+
+
+</body>
+
+</html>
+{% endblock %}

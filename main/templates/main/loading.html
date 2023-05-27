@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Главная</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+</head>
+
+<body class="loadpage" id="preloader">
+
+    <div class="loadcenter">
+        <div class="ring"></div>
+        <div class="ringinside">
+            <a href="#"><img src="images/Find-n-trade.png" alt="" width="300px"></a>
+            <div class="loadtext">
+                <span>Идет загрузка... </span>
+                <span>Пожалуйста, подождите</span>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+<script src="js/loading.js"></script>
+
+</html>
+{% endblock %}
