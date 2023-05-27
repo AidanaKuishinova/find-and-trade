@@ -1,3 +1,5 @@
+import uuid
+
 from django.shortcuts import render, redirect
 from .models import CustomUser, Profile, Ad
 from django.urls import reverse_lazy, reverse
@@ -11,7 +13,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import FavoriteAd
 from chat.models import Thread
-
+from .utils import *
 # Create your views here.
 def index(request):
     return render(request, 'main/index.html', {})
@@ -297,6 +299,52 @@ def forgot3(request):
     return render(request, 'main/forgot_password_3.html', {})
 
 
+def reset_password(request):
+    if request.method == "POST":
+
+        try:
+            email = request.POST.get("email")
+            user = CustomUser.objects.get(email=email)
+            print(user)
+            id = user.id
+            token = uuid.uuid4()
+            user.reset_password_token = token
+            user.save()
+            send_reset_password_mail(email=email, token=str(token),  id=id)
+            return render(request, 'main/forgot_password_1.html')
+        except Exception as e:
+            print(e)
+    else:
+        return render(request, 'main/forgot_password_1.html')
+
+
+def password_reset_confirm(request, user, token):
+    if request.method == "POST":
+        print(request.POST)
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+        print(password1)
+        if password1 == password2 :
+            user = CustomUser.objects.get(id=user)
+            user.set_password(password1)
+            user.save()
+            return 'password changed'
+        else:
+            return render(request, 'api/password_reset_confirm.html', {"error": "We have error"})
+    else:
+        try:
+            user = CustomUser.objects.get(id=user)
+            if str(user.reset_password_token) == token:
+                # user.reset_password_token = None
+                user.save()
+                return render(request, 'main/forgot_password_3.html',{'id':user.id, 'token':token})
+            else:
+                print('no')
+                return render(request, 'api/error_page.html', {'message': "Недействительный токен"})
+        except Exception as e:
+            print(e)
+            return render(request, 'api/error_page.html', {'message': "Недействительный токен"})
+
 def myprofile(request):
     return render(request, 'main/myprofile.html', {})
 
@@ -327,6 +375,9 @@ def contact(request):
 
 def loading(request):
     return render(request, 'main/loading.html', {})
+
+def error(request):
+    return render(request, 'main/error.html', {})
 
 def payment(request):
     return render(request, 'main/payment.html', {})

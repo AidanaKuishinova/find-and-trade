@@ -12,9 +12,7 @@ urlpatterns = [
     path('myprofile/', views.myprofile, name='myprofile'),
     path('other_user_profile/', views.other_user_profile, name='other_user_profile'),
     path('profile_edit/', views.ProfileUpdateView.as_view(), name='profile edit'),
-    path('forgot1/', views.forgot1, name='forgot1'),
-    path('forgot2/', views.forgot2, name='forgot2'),
-    path('forgot3/', views.forgot3, name='forgot3'),
+
 
     path('categories/', views.categories, name='categories'),
     path('categories2/', views.categories2, name='categories2'),
@@ -47,9 +45,16 @@ urlpatterns = [
     path('chat/', views.chatt, name='chat'),
     path('contact/', views.contact, name='contact'),
     path('loading/', views.loading, name='loading'),
+    path('error/', views.error, name='error'),
     path('payment/', views.payment, name='payment'),
     path('tariff/', views.tariff, name='tariff'),
     path('termscond/', views.termscond, name='termscond'),
+
+    path('forgot1/', views.forgot1, name='forgot1'),
+    path('forgot2/', views.forgot2, name='forgot2'),
+    path('forgot3/', views.forgot3, name='forgot3'),
+    path('reset_password/', views.reset_password, name="reset_password"),
+    path('reset/<str:user>/<str:token>/', views.password_reset_confirm, name="password_reset_confirm"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,10 +1,12 @@
+
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ошибка</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 </head>
 <body class="body">
     <div class="error__container">
@@ -14,7 +16,7 @@
             <span>Страница, которую вы искали, не существует.</span>
 
             <div class="error__container__wrapper__buttons">
-                <button class="error__container__wrapper__buttons-back"><a href="">Вернуться назад</a></button>
+
                 <button class="error__container__wrapper__buttons-home"><a href="index.html">Вернуться на главную</a></button>
             </div>
         </div>
