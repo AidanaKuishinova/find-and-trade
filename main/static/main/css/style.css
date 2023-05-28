@@ -286,7 +286,7 @@ nav {
 }
 .trades-item {
    margin-top: 50px;
-   width: 300px;
+   width: 22.5%;
    min-height: 400px;
    background: #FFFFFF;
    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.15);
@@ -688,9 +688,10 @@ nav {
   overflow-x: hidden;
 }
 .authorization__container {
+  background: var(--bs-gradient_one);
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 30px 50px;
 }
@@ -714,6 +715,7 @@ nav {
 .authorization__wrapper-block-heading {
   margin-bottom: 40px;
   font-size: 40px;
+  color: white;
 }
 .authorization__wrapper-block-form {
   display: flex;
@@ -736,6 +738,7 @@ nav {
 .authorization__wrapper-block-form__pair-label {
   font-size: 24px;
   margin-bottom: 11px;
+  color: white;
 }
 .authorization__wrapper-block-form__pair-input {
   width: 100%;
@@ -769,6 +772,7 @@ nav {
 }
 .authorization__wrapper-block-form span {
   margin-bottom: 9px;
+  color: white;
 }
 .authorization__wrapper-block-form-forgetten__password {
   color: white;
@@ -1266,17 +1270,24 @@ nav {
 .margined {
   margin-top: 32px;
 }
-
 :root {
-  --bs-lightblue: #84CEEB;
-  --bs-blue: #5AB9EA;
-  --bs-gradient_one: linear-gradient(60deg, rgba(104, 201, 201, 0.8724440459777661) 15%, rgba(90, 185, 234, 0.4186625333727241) 49%, rgba(86, 128, 233, 0.7015756986388305) 84%);
-  --bs--gradient_two: linear-gradient(45deg, rgba(255, 255, 255, 0.8724440459777661) 15%, rgba(86, 128, 233, 0.7015756986388305) 84%);
-  --bs--lapisblue: #5680E9;
-  --bs-darkblue: #152243;
-  --bs-lavender: #83A4EF;
-  --bs-green: #81D6CD;
+    --bs-lightblue: #84CEEB;
+    --bs-blue: #5AB9EA;
+    --bs-gradient_one: linear-gradient(60deg, rgba(104, 201, 201, 0.8724440459777661) 15%, rgba(90, 185, 234, 0.4186625333727241) 49%, rgba(86, 128, 233, 0.7015756986388305) 84%);
+    --bs--gradient_two: linear-gradient(45deg, rgba(255, 255, 255, 0.8724440459777661) 15%, rgba(86, 128, 233, 0.7015756986388305) 84%);
+    --bs--gradient_three: linear-gradient(45deg, rgba(255, 255, 255, 0.8724440459777661) 15%, rgba(109, 177, 232, 0.702) 90%);
+    --bs--gradient_four: linear-gradient(45deg, #68C9C9, #5680E9);
+    --bs--lapisblue: #5680E9;
+    --bs-darkblue: #152243;
+    --bs-sea: #072A82;
+    --bs-lavender: #83A4EF;
+    --bs-green: #81D6CD;
+    --bs-grayblue: #2E5E71;
+    --bs-lime: #00FF85;
+    --bs-red: #FF3E3E;
+    --bs-yellow: #FFD84F;
 }
+
 
 .myprofile {
   width: 85%;

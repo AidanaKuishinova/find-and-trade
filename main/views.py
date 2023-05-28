@@ -5,7 +5,7 @@ from .models import CustomUser, Profile, Ad
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, UpdateView,DetailView
 from django.views.generic.base import TemplateView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from .forms import CustomUserForm, CustomUserEditForm, ProfileForm, AuthUserForm, AdCreateForm
 from multi_form_view import MultiModelFormView
 from django.db.models import Q
@@ -16,7 +16,8 @@ from chat.models import Thread
 from .utils import *
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html', {})
+    ads=Ad.objects.order_by('create_date')
+    return render(request, 'main/index.html', {'ads':ads[0:8]})
 
 
 def chatt(request):
@@ -165,6 +166,8 @@ class LoginUserView(LoginView):
     success_url = reverse_lazy('index')
     form_class = AuthUserForm
 
+class MyLogoutView(LogoutView):
+    next_page = reverse_lazy("index")
 
 class AdCreateView(CreateView):
     template_name = "main/create_ad.html"

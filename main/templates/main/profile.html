@@ -33,8 +33,14 @@
                  {% endif %}
             {% if user.is_authenticated and user.email == model.email %}
             <a href="{% url 'profile edit' %}" id="btnedit">
-                <div class="btnedit">
+                <div class="btnedit" style="margin-bottom:10px; ">
                     <i class="fa fa-pencil"></i><p id="editpro">Редактировать<br>профиль</p>
+                    <div id="penicon"><i class="fa fa-pencil"></i></div>
+                </div>
+            </a>
+            <a href="{% url 'logout' %}" id="btnedit">
+                <div class="btnedit" style="margin-top:10px; background-color: var(--bs-red);">
+                    <i class="fa fa-pencil"></i><p id="editpro">Выйти</p>
                     <div id="penicon"><i class="fa fa-pencil"></i></div>
                 </div>
             </a>

@@ -27,53 +27,17 @@
             <div class="trades__header">Недавние объявления</div>
 
             <div class="trades__wrapper">
+                {% for ad in ads %}
                 <div class="trades-item">
-                    <img src="img/trade_1.jpg" alt="trade" class="trades-item__img">
-                    <div class="trades-item__name">SMM специалист</div>
-                    <button class="trades-item__btn">Подробнее</button>
+                    {% if ad.image_link.file is not None     %}
+                    <img src={{ad.image_link.url}} alt="trade" class="trades-item__img">
+                    {% else %}
+                    <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" class="trades-item__img">
+                    {% endif %}
+                    <div class="trades-item__name">{{ad.title}}</div>
+                    <button class="trades-item__btn"><a href="{% url 'ad_details' id=ad.id %}"> Подробнее </a></button>
                 </div>
-
-                <div class="trades-item">
-                    <img src="img/trade_2.jpg" alt="trade" class="trades-item__img">
-                    <div class="trades-item__name">Кондитер</div>
-                    <button class="trades-item__btn">Подробнее</button>
-                </div>
-
-                <div class="trades-item">
-                    <img src="img/trade_3.jpg" alt="trade" class="trades-item__img">
-                    <div class="trades-item__name">Контейнеры для кафе</div>
-                    <button class="trades-item__btn">Подробнее</button>
-                </div>
-
-                <div class="trades-item">
-                    <img src="img/trade_4.jpg" alt="trade" class="trades-item__img">
-                    <div class="trades-item__name">Веб-разработка</div>
-                    <button class="trades-item__btn">Подробнее</button>
-                </div>
-
-                <div class="trades-item">
-                    <img src="img/trade_5.jpg" alt="trade" class="trades-item__img">
-                    <div class="trades-item__name">Кофейные зерна</div>
-                    <button class="trades-item__btn">Подробнее</button>
-                </div>
-
-                <div class="trades-item">
-                    <img src="img/trade_6.jpg" alt="trade" class="trades-item__img">
-                    <div class="trades-item__name">Мебель для кафе/ресторанов</div>
-                    <button class="trades-item__btn">Подробнее</button>
-                </div>
-
-                <div class="trades-item">
-                    <img src="img/trade_7.jpg" alt="trade" class="trades-item__img">
-                    <div class="trades-item__name">Цемент строительный</div>
-                    <button class="trades-item__btn">Подробнее</button>
-                </div>
-
-                <div class="trades-item">
-                    <img src="img/trade_8.jpg" alt="trade" class="trades-item__img">
-                    <div class="trades-item__name">Массажные кушетки</div>
-                    <button class="trades-item__btn">Подробнее</button>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
