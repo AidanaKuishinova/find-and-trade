@@ -25,18 +25,28 @@
             <h1 class="categories__container-heading">Результаты поиска {{request.GET.q}}</h1>
             <div class="search__result-wrapper">
                 <div class="search__result-wrapper-sorting">
-                    <form action="" class="search__result-wrapper-sorting-form">
+                    <form action="{% url 'searchresult' %}" method="GET" class="search__result-wrapper-sorting-form">
                         <div class="search__result-wrapper-sorting-form__element">
-                            Сортировка
+                            Сортировка <select name="filter_type" id="filter_type">
+                            <option value="price_down">По цене(убывание)</option>
+                            <option value="price_up">По цене(возрастание)</option>
+                            <option value="alphabet">По алфавиту от А-Я</option>
+                            <option value="create_date">По новизне</option>
+
+                        </select>
+
                         </div>
                         <div class="search__result-wrapper-sorting-form__element">
                             Фильтры
                         </div>
+                        <button type="submit">Применить</button>
+                        {% csrf_token%}
                     </form>
                 </div>
                 <div class="search__result-wrapper-results">
 
                     {% for i in object_list %}
+                    <a href="{% url 'ad_details' id=i.id %}">
                     <div class="search__result-wrapper-results-item">
                         <div class="search__result-wrapper-results-item-image">
                              {% if i.image_link.file is not None     %}
@@ -58,8 +68,9 @@
                             <span>  {{i.title}} - {{i.cost}} - {{i.responders.all|length}}</span>
                         </div>
                     </div>
-
+                    </a>
                     {% endfor %}
+
                 </div>
             </div>
     </div>

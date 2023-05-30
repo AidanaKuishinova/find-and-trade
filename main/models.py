@@ -59,6 +59,8 @@ class Profile(models.Model):
     id = models.AutoField(primary_key=True, verbose_name="ID")
     city = models.CharField(max_length=15, blank=True, null=True, verbose_name="City")
     date_of_birth = models.DateField(max_length=15, blank=True, null=True, verbose_name='Date of birth')
+    company_name=models.CharField(max_length=30, blank=True, null=True, verbose_name="Company name")
+    description=models.TextField(blank=True, null=True, verbose_name="Description")
     phone_number = models.CharField(max_length=15, blank=True, null=True, verbose_name="Phone number")
     role = models.CharField(max_length=200, choices=Role.choices, verbose_name="Role")
     image_link = models.ImageField(upload_to=user_profile_directory_path, blank=True, null=True,

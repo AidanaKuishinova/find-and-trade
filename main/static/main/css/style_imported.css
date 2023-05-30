@@ -1538,9 +1538,12 @@ border-radius: 10px;
 }
 .other_users_profile_right_2_ad{
   margin-bottom: 0;
+  display: flex;
 }
+
 .other_users_profile_right_2_ad:not(:last-child){
   margin-bottom: 40px;
+  display: flex;
 }
 .other_users_profile_right_2_ad_image{
   float: left;
@@ -1569,6 +1572,7 @@ border-radius: 10px;
 }
 #other_users_profile_right_2_ad_desc{
   overflow: hidden;
+  width: 100%;
    display: -webkit-box;
    -webkit-line-clamp: 4;
            line-clamp: 2;

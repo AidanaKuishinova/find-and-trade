@@ -9,9 +9,8 @@ urlpatterns = [
     path('register/', views.RegisterUserView.as_view(), name='register'),
     path('login/', views.LoginUserView.as_view(), name='login'),
     path('logout/', views.MyLogoutView.as_view(), name='logout'),
-    path('profile/my_profile', views.ProfileView.as_view(), name='profile'),
-    path('myprofile/', views.myprofile, name='myprofile'),
-    path('other_user_profile/<str:id>', views.other_user_profile, name='other_user_profile'),
+    path('my_profile/', views.ProfileView.as_view(), name='profile'),
+    path('profile/<str:id>/', views.OtherProfileView.as_view(), name='other_user_profile'),
     path('profile_edit/', views.ProfileUpdateView.as_view(), name='profile edit'),
 
 
@@ -54,6 +53,7 @@ urlpatterns = [
     path('forgot1/', views.forgot1, name='forgot1'),
     path('forgot2/', views.forgot2, name='forgot2'),
     path('forgot3/', views.forgot3, name='forgot3'),
+    path('congrats_password/', views.congrats_password, name='congrats_password'),
     path('reset_password/', views.reset_password, name="reset_password"),
     path('reset/<str:user>/<str:token>/', views.password_reset_confirm, name="password_reset_confirm"),
 ]

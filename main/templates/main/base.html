@@ -28,7 +28,7 @@
                     <div class="header__settings-lang">РУС</div>
                     <img src="{% static 'main/icons/location.svg' %}" alt="location" class="header__settings-loc">
                     {% if user.is_authenticated %}
-                        <a href=" {% url 'profile' id=request.user.id %}  "><img src="{% static 'main/icons/profile.svg' %}" alt="profile" class="header__settings-profile"></a>
+                        <a href=" {% url 'profile' %}  "><img src="{% static 'main/icons/profile.svg' %}" alt="profile" class="header__settings-profile"></a>
                         {% else %}
                         <a href="{% url 'register' %} "><img src="{% static 'main/icons/profile.svg' %}" alt="profile" class="header__settings-profile"></a>
                     {% endif %}

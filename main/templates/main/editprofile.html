@@ -59,14 +59,27 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="r">
                         <div class="editform">
                             <p class="editname">Эл.почта</p>
                             <div class="editfill">
                                 {{forms.custom_user_form.email}}
                             </div>
                         </div>
+                        <div class="editbtn">
+                            <div class="editrole">
+                                {% for radio in forms.profile_form.role|slice:"1:" %}
+                                <div class="choice">
+                                    <label for="contactChoice1">{{ radio.choice_label }}</label>
+                                    {{radio.tag}}
+                                </div>
+                            {% endfor%}
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="r">
                         <div class="editform">
                             <p class="editname">Телефон</p>
                             <div class="editfill">
@@ -80,15 +93,17 @@
                                 <input type="date" value="ГГГГ-MM-ДД" />
                             </div>
                         </div>
-                        <div class="editbtn">
-                            <div class="editrole">
-                                {% for radio in forms.profile_form.role|slice:"1:" %}
-                                <div class="choice">
-                                    <label for="contactChoice1">{{ radio.choice_label }}</label>
-                                    {{radio.tag}}
-                                </div>
-                            {% endfor%}
+                           <div class="editform">
+                            <p class="editname">Имя компании</p>
+                            <div class="editfill">
+                                {{forms.profile_form.company_name}}
 
+                            </div>
+                        </div>
+                        <div class="editform">
+                            <p class="editname">Описание компании</p>
+                            <div class="editfill">
+                                {{forms.profile_form.description}}
 
                             </div>
                         </div>

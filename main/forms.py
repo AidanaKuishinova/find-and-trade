@@ -8,7 +8,7 @@ class ProfileForm(forms.ModelForm):
     image_link=ImageField(widget=FileInput)
     class Meta:
         model = Profile
-        fields = ['phone_number', 'role','image_link']
+        fields = ['phone_number', 'role','image_link','description','company_name']
 
         widgets = {
             'phone_number': forms.TextInput(
@@ -16,6 +16,10 @@ class ProfileForm(forms.ModelForm):
                 'class': 'registration__form__inputs-pair-input',
                 'placeholder': 'Введите номер телефона'
             }),
+            'description': forms.Textarea(
+                attrs={
+                    'style': 'width:350px;'
+                }),
             'role': forms.RadioSelect(attrs={'class': 'registration__form__inputs-pair-input-radio'}),
         }
 

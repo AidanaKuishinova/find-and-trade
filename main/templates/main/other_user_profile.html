@@ -14,44 +14,31 @@
 </head>
 
 <body background="images/bg2.png">
-
-    <header>
-
-        <div class="webtitle"><a href="main.html"><img src="images/Find-n-trade.png" alt=""></a></div>
-        <div class="headerright">
-            <a href="#">Категории</a>
-            <a href="#">Блог</a>
-            <a href="#">О нас</a>
-            <a href="#">Контакты</a>
-        </div>
-        <div class="lang-menu">
-            <div class="select-lang">
-                РУС
-            </div>
-            <ul>
-                <li><a href="#">ҚАЗ</a></li>
-                <li><a href="#">ENG</a></li>
-            </ul>
-        </div>
-        <div class="icons">
-            <a href=""><img src="images/location.png" alt=""></a>
-            <a href="#"><img src="images/user.png" alt=""></a>
-        </div>
-
-    </header>
-
     <main>
       <div class="other_users_profile">
         <div class="other_users_profile_left">
           <div class="other_users_profile_left_1">
             <div class="other_users_profile_left_1_image">
-              <img src="images/blog3.jpeg" alt="">
+              {% if model.profile.image_link.file is not None %}
+              <img src="{{model.profile.image_link.url}}" alt="" style="object-fit:cover;
+                 object-position: right;
+                 width:200px;
+                 height:200px;
+                 border: solid 1px #CCC;
+                 border-radius:15px;">
+                 {% else %}
+                 <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="object-fit:cover;
+              object-position: right;
+                 width:200px;
+                 height:200px;
+                 border: solid 1px #CCC">
+                 {% endif %}
             </div>
             <br>
-            <h2>Имя Фамилия</h2>
+            <h2>{{ model.name }} {{ model.surname }}</h2>
             <br>
-            <h3>Название компании</h3>
-            <em><h4>На сайте с 9 ноября 2022</h4></em>
+            <h3>{{ model.profile.company_name }}</h3>
+            <em><h4>На сайте с {{ model.date_joined|date:"d M Y" }}г.</h4></em>
             <br>
             <div class="other_users_profile_left_1_buttons">
               <button id="other_users_profile_share"type="submit" name="button">Поделиться</button>
@@ -63,45 +50,37 @@
           <div class="other_users_profile_right_1">
             <h2>О себе/компании</h2>
             <br>
-            <p>nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras </p>
+            <p>{{ model.profile.description }}</p>
           </div>
           <div class="other_users_profile_right_2">
+            {%for ad in ads%}
             <div class="other_users_profile_right_2_ad">
               <div class="other_users_profile_right_2_ad_image">
-                <img src="images/blog3.jpeg" alt="">
+                {% if ad.image_link.file is not None     %}
+              <img src="{{ad.image_link.url}}" alt="" style="object-fit:cover;
+              object-position: right;
+                 width:200px;
+                 height:200px;
+                 border: solid 1px #CCC">
+              {% else %}
+              <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="object-fit:cover;
+              object-position: right;
+                 width:200px;
+                 height:200px;
+                 border: solid 1px #CCC">
+
+              {% endif %}
               </div>
               <div class="other_users_profile_right_2_ad_desc">
-                <a href="#"><h2>Свежая клубника Турция и Египет</h2></a>
+                <a href="{% url 'ad_details' id=ad.id %}"><h2>{{ad.title}}</h2></a>
                 <br>
-                <p id="other_users_profile_right_2_ad_desc">nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras</p>
+                <p id="other_users_profile_right_2_ad_desc">{{ad.description}}</p>
                 <br>
-                <p>2 мая 2023</p>
+                <p>{{ad.create_date}}</p>
               </div>
             </div>
-            <div class="other_users_profile_right_2_ad">
-              <div class="other_users_profile_right_2_ad_image">
-                <img src="images/blog3.jpeg" alt="">
-              </div>
-              <div class="other_users_profile_right_2_ad_desc">
-                <a href="#"><h2>Свежая клубника Турция и Египет</h2></a>
-                <br>
-                <p id="other_users_profile_right_2_ad_desc">nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras</p>
-                <br>
-                <p>2 мая 2023</p>
-              </div>
-            </div>
-            <div class="other_users_profile_right_2_ad">
-              <div class="other_users_profile_right_2_ad_image">
-                <img src="images/blog3.jpeg" alt="">
-              </div>
-              <div class="other_users_profile_right_2_ad_desc">
-                <a href="#"><h2>Свежая клубника Турция и Египет</h2></a>
-                <br>
-                <p id="other_users_profile_right_2_ad_desc">nunc lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras</p>
-                <br>
-                <p>2 мая 2023</p>
-              </div>
-            </div>
+            {% endfor %}
+
           </div>
         </div>
       </div>

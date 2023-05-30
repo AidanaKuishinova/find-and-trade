@@ -71,7 +71,20 @@ class ProfileView(TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(ProfileView, self).get_context_data(**kwargs)
+        ctx['id'] = self.request.user.id
+        self.model = CustomUser.objects.get(id=ctx['id'])
+        ctx['model'] = self.model
+        return ctx
+
+
+class OtherProfileView(TemplateView):
+    template_name = "main/other_user_profile.html"
+
+    def get_context_data(self, **kwargs):
+        ctx = super(OtherProfileView, self).get_context_data(**kwargs)
         ctx['id'] = self.kwargs['id']
+        ctx['ads'] = Ad.objects.filter(user__id=ctx['id'])[0:3]
+        print(ctx)
         self.model = CustomUser.objects.get(id=ctx['id'])
         ctx['model'] = self.model
         return ctx
@@ -107,6 +120,8 @@ class ProfileUpdateView(MultiModelFormView, UpdateView):
         forms['custom_user_form'].fields['surname'].initial = self.model.surname
         forms['custom_user_form'].fields['email'].initial = self.model.email
 
+        forms['profile_form'].fields['company_name'].initial = self.model.profile.company_name
+        forms['profile_form'].fields['description'].initial = self.model.profile.description
         forms['profile_form'].fields['phone_number'].initial = self.model.profile.phone_number
         forms['profile_form'].fields['role'].initial = self.model.profile.role
         forms['profile_form'].fields['image_link'].initial = self.model.profile.image_link
@@ -136,31 +151,6 @@ class AdEditView(UpdateView):
         ad = Ad.objects.get(id=self.kwargs['pk'], user=model)
         return {'title': ad.title}
 
-    # def get_context_data(self, **kwargs):
-    #     ctx = super(AdEditView, self).get_context_data(**kwargs)
-    #     ctx['model'] = self.model
-    #     return ctx
-    #
-    # def forms_valid(self, forms):
-    #     ad_edit_form = forms['ad_edit_form'].save(commit=False)
-    #     print("forms is valid")
-    #
-    #     return super(AdEditView, self).forms_valid(forms)
-    #
-    # def get_form_class(self):
-    #     self.model = CustomUser.objects.get(id=self.request.user.id)
-    #     self.ad = Ad.objects.get(id=self.kwargs['pk'], user=self.model)
-    #     form = super(AdEditView, self).get_form_class()
-    #     form['ad_edit_form'].fields['title'].initial = self.ad.title
-    #     form.fields['company_name'].initial = self.ad.company_name
-    #     form.fields['image_link'].initial = self.ad.image_link
-    #     form.fields['description'].initial = self.ad.description
-    #     form.fields['cost'].initial = self.ad.cost
-    #
-    #
-    #     return form
-
-
 class LoginUserView(LoginView):
     template_name = "main/login.html"
     success_url = reverse_lazy('index')
@@ -182,7 +172,7 @@ class AdListView(ListView):
 class SearchResultView(ListView):
     template_name = "main/search_result.html"
     model = Ad
-    paginate_by = 8
+    paginate_by = 16
 
     def get_queryset(self):
         query=self.request.GET.get("q")
@@ -190,9 +180,23 @@ class SearchResultView(ListView):
             object_list=Ad.objects.filter(
                 Q(title__icontains=query)
             )
+            print(self.request.GET)
+        if self.request.GET.get("filter_type"):
+            filter_type=self.request.GET.get("filter_type")
+            if filter_type== "price_down":
+                object_list = Ad.objects.order_by('-cost')
+            if filter_type == "price_up":
+                object_list = Ad.objects.order_by('cost')
+            if filter_type == "alphabet":
+                object_list = Ad.objects.order_by('title')
+            if filter_type == "create_date":
+                object_list = Ad.objects.order_by('-create_date')
+
+
         else:
             object_list=Ad.objects.all()
         return object_list
+
 
 class DetailAdView(DetailView):
     template_name = "main/ad_details.html"
@@ -302,6 +306,9 @@ def forgot3(request):
     return render(request, 'main/forgot_password_3.html', {})
 
 
+def congrats_password(request):
+    return render(request, 'main/congrats_password.html', {})
+
 def reset_password(request):
     if request.method == "POST":
 
@@ -314,7 +321,7 @@ def reset_password(request):
             user.reset_password_token = token
             user.save()
             send_reset_password_mail(email=email, token=str(token),  id=id)
-            return render(request, 'main/forgot_password_1.html')
+            return render(request, 'main/inform_email.html')
         except Exception as e:
             print(e)
     else:
@@ -327,13 +334,13 @@ def password_reset_confirm(request, user, token):
         password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
         print(password1)
-        if password1 == password2 :
+        if password1 == password2:
             user = CustomUser.objects.get(id=user)
             user.set_password(password1)
             user.save()
-            return 'password changed'
+            return redirect('congrats_password')
         else:
-            return render(request, 'api/password_reset_confirm.html', {"error": "We have error"})
+            return render(request, 'main/error.html', {"error": "We have error"})
     else:
         try:
             user = CustomUser.objects.get(id=user)
@@ -343,10 +350,10 @@ def password_reset_confirm(request, user, token):
                 return render(request, 'main/forgot_password_3.html',{'id':user.id, 'token':token})
             else:
                 print('no')
-                return render(request, 'api/error_page.html', {'message': "Недействительный токен"})
+                return render(request, 'main/error.html', {'message': "Недействительный токен"})
         except Exception as e:
             print(e)
-            return render(request, 'api/error_page.html', {'message': "Недействительный токен"})
+            return render(request, 'main/error.html', {'message': "Недействительный токен"})
 
 def myprofile(request):
     return render(request, 'main/myprofile.html', {})
