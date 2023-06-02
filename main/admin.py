@@ -6,6 +6,8 @@ from .models import (
     Profile,
     Ad,
     FavoriteAd,
+    Respond,
+    Category,
 )
 # Register your models here.
 class MyUserAdmin(BaseUserAdmin):
@@ -29,4 +31,6 @@ admin.site.register(CustomUser, MyUserAdmin)
 admin.site.register(Profile)
 admin.site.register(Ad)
 admin.site.register(FavoriteAd)
+admin.site.register(Respond)
+admin.site.register(Category)
 # Register your models here.

@@ -19,8 +19,27 @@
             <h1 class="registration__header">Регистрация</h1>
              <form  class="registration__form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-               
-                <div class="registration__form__inputs">
+               {{forms.custom_user_form.errors}}
+               {{forms.profile_form.errors}}
+                <div class="registration__f
+                orm__inputs">
+                                          {% if forms.profile_form.image_link.initial is not None %}
+                    <img src="/media/{{forms.profile_form.image_link.initial}}" alt="" style="object-fit:cover;
+                        object-position: right;
+                        width:300px;
+                 height:300px;
+                 border: solid 1px #CCC;
+                 border-radius:15px;">
+                 {% else %}
+                 <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="object-fit:cover;
+              object-position: right;
+                 width:250px;
+                 height:250px;
+                 border: solid 1px #CCC">
+                 {% endif %}
+                    <div class="picedit">
+
+                        {{forms.profile_form.image_link}}
                     <div class="registration__form__inputs-pair">
                         <label for="name">Имя</label>
                         {{forms.custom_user_form.name}}

@@ -18,97 +18,34 @@
         <div class="otkliki">
 
             <h1>Отклики</h1>
+
+
             <div class="notifs">
                 <div class="grid-container">
+                    {% for i in object_list %}
                     <div class="grid-item">
-                        <h3>Заголовок</h3>
-                        <p>Название компании</p>
+                        <h3>{{i.title}}</h3>
+                        <p>{{i.user.profile.company_name}}</p>
                     </div>
                     <div class="grid-item" id="onwait">
-                        В ожидании
+                        {% for respond in i.responders.all %}
+                            {% if respond.user == request.user %}
+                                {{ respond.state }}
+                            {% endif %}
+                        {% endfor %}
                     </div>
                     <div class="grid-item">
-                        27/10/2022
-                    </div>
-                    <div class="grid-item">
-                        <input type="button" value="Открыть">
-                    </div>
-                </div>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <h3>Заголовок</h3>
-                        <p>Название компании</p>
-                    </div>
-                    <div class="grid-item" id="declined">
-                        Отказ
-                    </div>
-                    <div class="grid-item">
-                        27/10/2022
+                        {% for respond in i.responders.all %}
+                            {% if respond.user == request.user %}
+                                {{ respond.create_date }}
+                            {% endif %}
+                        {% endfor %}
                     </div>
                     <div class="grid-item">
                         <input type="button" value="Открыть">
                     </div>
                 </div>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <h3>Заголовок</h3>
-                        <p>Название компании</p>
-                    </div>
-                    <div class="grid-item" id="approved">
-                        Приглашение
-                    </div>
-                    <div class="grid-item">
-                        27/10/2022
-                    </div>
-                    <div class="grid-item">
-                        <input type="button" value="Открыть">
-                    </div>
-                </div>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <h3>Заголовок</h3>
-                        <p>Название компании</p>
-                    </div>
-                    <div class="grid-item" id="onwait">
-                        В ожидании
-                    </div>
-                    <div class="grid-item">
-                        27/10/2022
-                    </div>
-                    <div class="grid-item">
-                        <input type="button" value="Открыть">
-                    </div>
-                </div>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <h3>Заголовок</h3>
-                        <p>Название компании</p>
-                    </div>
-                    <div class="grid-item" id="approved">
-                        Приглашение
-                    </div>
-                    <div class="grid-item">
-                        27/10/2022
-                    </div>
-                    <div class="grid-item">
-                        <input type="button" value="Открыть">
-                    </div>
-                </div>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <h3>Заголовок</h3>
-                        <p>Название компании</p>
-                    </div>
-                    <div class="grid-item" id="approved">
-                        Приглашение
-                    </div>
-                    <div class="grid-item">
-                        27/10/2022
-                    </div>
-                    <div class="grid-item">
-                        <input type="button" value="Открыть">
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 

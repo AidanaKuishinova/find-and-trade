@@ -54,8 +54,14 @@
           <div class="ad_details_desc_title">
             <p><b>Цена: </b>от {{object.cost}}тг</p>
           </div>
-          <br>
-          <button type="submit" name="button">Откликнуться</button>
+
+            <form action="/add_responder/" method="POST">
+                {% csrf_token %}
+                <input type="text" name="id_ad" value="{{object.id}}" hidden>
+                <input type="text" name="id_user" value="{{request.user.id}}" hidden>
+
+                    <button>Откликнуться</button>
+            </form>
         </div>
       </div>
     </main>

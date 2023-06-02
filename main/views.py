@@ -1,7 +1,7 @@
 import uuid
 
 from django.shortcuts import render, redirect
-from .models import CustomUser, Profile, Ad
+from .models import CustomUser, Profile, Ad, RespondState
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, UpdateView,DetailView
 from django.views.generic.base import TemplateView
@@ -11,7 +11,7 @@ from multi_form_view import MultiModelFormView
 from django.db.models import Q
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import FavoriteAd
+from .models import FavoriteAd, Respond
 from chat.models import Thread
 from .utils import *
 # Create your views here.
@@ -191,8 +191,6 @@ class SearchResultView(ListView):
                 object_list = Ad.objects.order_by('title')
             if filter_type == "create_date":
                 object_list = Ad.objects.order_by('-create_date')
-
-
         else:
             object_list=Ad.objects.all()
         return object_list
@@ -239,8 +237,7 @@ class RespondsListView(ListView):
 
     def get_queryset(self):
         new_context = Ad.objects.filter(
-            user=self.request.user,
-
+            responders__user=self.request.user,
             is_active=True
         )
         return new_context
@@ -252,9 +249,11 @@ def add_responders(request):
         id_user = request.POST.get("id_user")
         ad = Ad.objects.get(id=id_ad)
         user = CustomUser.objects.get(id=id_user)
-        ad.responders.add(user)
+        respond = Respond(user=user, state=RespondState.PROCESSING)
+        respond.save()
+        ad.responders.add(respond)
         ad.save()
-        return redirect("ad list")
+        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 
 def blog(request):
