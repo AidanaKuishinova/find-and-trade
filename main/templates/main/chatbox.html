@@ -56,8 +56,11 @@
 
 
             </div>
+            <div  style="    display: flex;
+    flex-direction: column;
+    width: 1000px;">
             {% for thread in Threads %}
-            <div class="chatright" chat-id="chat_{{ thread.id }}" other-user-id="
+            <div class="chatright {% if forloop.first %} is_active  {% endif %}" chat-id="chat_{{ thread.id }}" other-user-id="
 			  {% if thread.first_person == user %}
 				  {{ thread.second_person.id }}
 			  {% else %}
@@ -84,13 +87,18 @@
                     {% endfor %}
 
                 </div>
-                <form action="#" id="message_input_form" class="chatbox_input">
-                    <a href="#"><i class="fa fa-file" style="font-size:20px;color:white;"></i></a>
-                    <input type="text" name="" id="message_input" placeholder="Написать сообщение">
-                    <a href="#"><i class="fa fa-send" style="font-size:20px;color:white;"></i></a>
-                </form>
+
             </div>
+
             {% endfor %}
+            <form action="#" id="message_input_form" class="chatbox_input">
+                    <input type="text" name="" id="message_input" class="message_input" placeholder="Написать сообщение">
+                    <button type="submit" style="margin:0 30px;">
+                         <i class="fa fa-send" style="font-size:20px;color:white;margin:0px;"></i>
+                    </button>
+
+            </form>
+        </div>
         </div>
 
     </main>
@@ -155,8 +163,8 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-const textarea = document.querySelector('#message_input')
-const chatboxForm = document.querySelector('#message_input_form')
+const textarea = document.querySelector('.message_input')
+const chatboxForm = document.querySelector('.chatbox_input')
 
 textarea.addEventListener('input', function () {
 	let line = textarea.value.split('\n').length
@@ -218,9 +226,9 @@ function getCurrentTime(){
 }
 
 
-let input_message = $('#message_input')
+let input_message = $('.message_input')
     let message_body = $('.chatbox')
-    let send_message_form = $('#message_input_form')
+    let send_message_form = $('.chatbox_input')
     const USER_ID = $('#logged-in-user').val()
 
     let loc = window.location
@@ -240,6 +248,8 @@ let input_message = $('#message_input')
     console.log('open', e)
     send_message_form.on('submit', function (e){
       e.preventDefault()
+            console.log("PREVENTED");
+
       let message = input_message.val()
       let send_to = get_active_other_user_id()
       let thread_id = get_active_thread_id()
@@ -250,6 +260,7 @@ let input_message = $('#message_input')
           'send_to': send_to,
           'thread_id': thread_id
       }
+      console.log(data);
       data = JSON.stringify(data)
       console.log(data)
       socket.send(data)

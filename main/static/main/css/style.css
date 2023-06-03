@@ -652,7 +652,7 @@ nav {
 }
 .registration__form__inputs-pair-radios_label label {
   font-size: 18px;
-  color: black;
+  color: white;
 }
 .registration__form-auth {
   display: flex;
@@ -677,6 +677,7 @@ nav {
   font-size: 30px;
   border: 1px solid white;
   transition: all 0.3s ease;
+  color: white;
 }
 .registration__form-button:hover {
   color: #5680E9;
@@ -708,7 +709,6 @@ nav {
   box-sizing: border-box;
   padding: 47px 60px;
   width: 550px;
-  height: 550px;
   background: #80D5CD;
   border-radius: 15px;
 }
@@ -732,6 +732,7 @@ nav {
   width: 100%;
   align-items: start;
   display: flex;
+  color:white;
   flex-direction: column;
   margin-bottom: 10px;
 }
@@ -757,12 +758,12 @@ nav {
 }
 .authorization__wrapper-block-form-button {
    margin: 20px auto;
-   width: 150px;
+  padding: 0 20px;
    height: 50px;
   background: #FFFFFF;
   border-radius: 14px;
   color: #80D5CD;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   transition: all 0.2s ease;
 }

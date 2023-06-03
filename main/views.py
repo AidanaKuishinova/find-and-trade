@@ -242,6 +242,16 @@ class RespondsListView(ListView):
         )
         return new_context
 
+class RespondsCompaniesListView(ListView):
+    template_name = "main/responds_companies.html"
+    model = Ad
+
+    def get_queryset(self):
+        new_context = Ad.objects.filter(
+            responders__user=self.request.user,
+            is_active=True
+        )
+        return new_context
 
 def add_responders(request):
     if request.method == "POST":

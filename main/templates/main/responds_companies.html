@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Find-n-Trade {% endblock %}
+{% block links %} {% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>Главная</title>
+    <meta charset="utf-8">
+     <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
+</head>
+
+<body class="responds">
+
+    <main>
+        <div class="otkliki">
+
+            <h1>Откликнувшиеся компании</h1>
+
+
+            <div class="notifs">
+                <div class="grid-container" style="grid-template-columns: 20% 20% 20% 20% 20%;">
+                    {% for i in object_list %}
+                    <div class="grid-item">
+                        <h3>{{i.title}}</h3>
+                        <p>{{i.user.profile.company_name}}</p>
+                    </div>
+                    <div class="grid-item" id="onwait">
+                        {% for respond in i.responders.all %}
+                            {% if respond.user == request.user %}
+                                {{ respond.state }}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="grid-item">
+                        <p>{% for respond in i.responders.all %}
+                            {% if respond.user == request.user %}
+                                {{ respond.create_date }}
+                            {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="grid-item">
+                        <input type="button" value="Принять">
+                    </div>
+                     <div class="grid-item">
+                        <input type="button" value="Отказать">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
+{% endblock %}

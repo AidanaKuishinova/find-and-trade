@@ -4,70 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация</title>
+    <title>Логин</title>
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
-   <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
-
+    <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
 </head>
 <body>
 
-    <div class="registration__container">
-        <a href="{% url 'index' %}">FIND-N-TRADE</a>
-        <!-- <img src="icons/circles/Ellipse_green.svg"  id="green_circle"> -->
+    <div class="authorization__container" style="height: auto;">
+        <a href="{% url 'index' %}" class="authorization__container-heading">FIND-N-TRADE</a>
         <img src="icons/circles/Ellipse_blue.svg" id="blue">
-        <div class="registration__wrapper">
-            <h1 class="registration__header">Регистрация</h1>
-             <form  class="registration__form" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-               {{forms.custom_user_form.errors}}
-               {{forms.profile_form.errors}}
-                <div class="registration__f
-                orm__inputs">
-                                          {% if forms.profile_form.image_link.initial is not None %}
-                    <img src="/media/{{forms.profile_form.image_link.initial}}" alt="" style="object-fit:cover;
-                        object-position: right;
-                        width:300px;
-                 height:300px;
-                 border: solid 1px #CCC;
-                 border-radius:15px;">
-                 {% else %}
-                 <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="object-fit:cover;
-              object-position: right;
-                 width:250px;
-                 height:250px;
-                 border: solid 1px #CCC">
-                 {% endif %}
-                    <div class="picedit">
+        <div class="authorization__wrapper">
+            <div class="authorization__wrapper-block">
+                <h1 class="authorization__wrapper-block-heading">Регистрация</h1>
+                <form class="authorization__wrapper-block-form" method="POST">
+                     {% csrf_token %}
+                   {{forms.custom_user_form.errors}}
+                   {{forms.profile_form.errors}}
 
-                        {{forms.profile_form.image_link}}
-                    <div class="registration__form__inputs-pair">
-                        <label for="name">Имя</label>
-                        {{forms.custom_user_form.name}}
+                    <div class="authorization__wrapper-block-form__pair">
+                        <label for="email" class="authorization__wrapper-block-form__pair-label">Имя</label>
+                       {{forms.custom_user_form.name}}
                     </div>
-                    <div class="registration__form__inputs-pair">
-                        <label for="surname">Фамилия</label>
-                        {{forms.custom_user_form.surname}}
-                    </div>
-                    <div class="registration__form__inputs-pair">
-                        <label for="email">Email адрес </label>
-                        {{forms.custom_user_form.email}}
-                    </div>
-                    <div class="registration__form__inputs-pair">
-                        <label for="phone">Сотовый телефон</label>
-                        {{forms.profile_form.phone_number}}
 
+                    <div class="authorization__wrapper-block-form__pair">
+                        <label for="email" class="authorization__wrapper-block-form__pair-label">Фамилия</label>
+                         {{forms.custom_user_form.surname}}
                     </div>
-                    <div class="registration__form__inputs-pair">
-                        <label for="password1">Придумайте пароль</label>
+
+
+                    <div class="authorization__wrapper-block-form__pair">
+                        <label for="email" class="authorization__wrapper-block-form__pair-label">Email адрес</label>
+                      {{forms.custom_user_form.email}}
+                    </div>
+
+
+                    <div class="authorization__wrapper-block-form__pair">
+                        <label for="email" class="authorization__wrapper-block-form__pair-label">Сотовый телефон</label>
+                      {{forms.profile_form.phone_number}}
+                    </div>
+
+                      <div class="authorization__wrapper-block-form__pair">
+                        <label for="password1" class="authorization__wrapper-block-form__pair-label">Придумайте пароль</label>
                         {{forms.custom_user_form.password}}
-                        <span class="warning">Пароль должен содержать от 8 до 14 симолов, одну строчную, одну заглавную букву и одну цифру</span>
+                        <span class="warning" style="
+                            font-size: 15px;
+                            text-align: left;
+                            opacity: 0.8;"
+                        >Пароль должен содержать от 8 до 14 симолов, одну строчную, одну заглавную букву и одну цифру</span>
                     </div>
-                    <div class="registration__form__inputs-pair">
+
+            <div class="authorization__wrapper-block-form__pair">
                         <label for="password2">Повторите пароль</label>
-                        <input type="password" class="registration__form__inputs-pair-input" name="password2">
+                        <input type="password" class="authorization__wrapper-block-form__pair-input" name="password2" placeholder="Повторите пароль">
                     </div>
-                    <div class="registration__form__inputs-pair-radios">
-                        <label for="role_header" style="margin: 9px 0px">Роль</label>
+                    <div class="authorization__wrapper-block-form__pair" style="margin-top: 10px;">
+                        <label for="role_header" >Роль</label>
                         {% for radio in forms.profile_form.role|slice:"1:" %}
                             <div class="registration__form__inputs-pair-radios_label">
                                 {{ radio.tag }}
@@ -75,58 +66,60 @@
                             </div>
                         {% endfor%}
                     </div>
-                </div>
+              <div class="registration__form__inputs-pair" style="width: 100%; color:white;">
+                        <label for="photo" style="margin: 9px 0px;     text-align: left;">Фото профиля</label>
 
-                <div class="registration__form-auth">
+                        <div class="picedit">
+                         <div class="panel">
+                          <div class="button_outer">
+                            <div class="btn_upload">
+                               {{forms.profile_form.image_link}} Upload Image
+                            </div>
+                            <div class="processing_bar"></div>
+                            <div class="success_box"></div>
+                          </div>
+                         </div>
+                        <div class="error_msg"></div>
+                        <div class="uploaded_file_view" id="uploaded_view">
+                          <span class="file_remove">X</span>
+                        </div>
+                        </div>
+                     </div>
+
+                    {% if form.errors %}
+                        <div class="authorization__wrapper-block-form-error">Неверный email или пароль</div>
+                    {% endif %}
+                    <button type="submit" class="authorization__wrapper-block-form-button">Зарегистрироваться</button>
                     <span>Есть логин? <a href="{% url 'login' %}"><u>Войдите</u></a></span>
-                </div>
-
-                <button type="submit" class="registration__form-button">
-                    Далее
-                </button>
-
-              
-             </form>
+                </form>
+            </div>
         </div>
     </div>
-    <main>
-        <h1 class="reg">Регистрация</h1>
-        <div class="registerchoose">
-          <p id="choosecat">Выберите категорию/тип вашего бизнеса</p>
-          <div class="buttonscats">
-            <button id="btn1" class="button_cat">Иновационный</button>
-            <button id="btn2" class="button_cat">Научно-технический</button>
-            <button id="btn3" class="button_cat" href="#">Производство товаров</button>
-          </div>
-          <div class="buttonscats">
-            <button id="btn4" class="button_cat" href="#">Оказание услуг</button>
-            <button id="btn5" class="button_cat" href="#">Производственное потребление товаров</button>
-          </div>
-          <div class="buttonscats">
-            <button id="btn6" class="button_cat" href="#">Информационный</button>
-            <button id="btn7" class="button_cat" href="#">Торговый</button>
-            <button id="btn8" class="button_cat" href="#">Товарные биржи</button>
-          </div>
-          <div class="buttonscats">
-            <button id="btn9" class="button_cat" href="#">Банковский</button>
-            <button id="btn10" class="button_cat" href="#">Информационные технологии</button>
-            <button id="btn11" class="button_cat" href="#">Страховой</button>
-          </div>
-          <div class="buttonscats">
-            <button id="btn12" class="button_cat" href="#">Администрирование</button>
-            <button id="btn13" class="button_cat" href="#">Финансовое управление</button>
-            <button id="btn14" class="button_cat" href="#">Аудиторский</button>
-          </div>
-          <p id="uploaddocs">Загрузите документы, подтверждающие деятельность вашей компании</p>
-        </div>
-        <div class="inputupload">
-          <input type="file" id="upload_button" />
-          <label id="upload_file" for="upload_button">Выбрать файл</label>
-        </div>
-        <div class="finishreg_1_2">
-          <button type="submit" name="button_finish_reg" id="finishregbtn">Завершить регистрацию</button>
-        </div>
-  
-      </main>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script> var btnUpload = $("#upload_file"),
+    btnOuter = $(".button_outer");
+  btnUpload.on("change", function(e){
+    var ext = btnUpload.val().split('.').pop().toLowerCase();
+    if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+      $(".error_msg").text("Not an Image...");
+    } else {
+      $(".error_msg").text("");
+      btnOuter.addClass("file_uploading");
+      setTimeout(function(){
+        btnOuter.addClass("file_uploaded");
+      },3000);
+      var uploadedFile = URL.createObjectURL(e.target.files[0]);
+      setTimeout(function(){
+        $("#uploaded_view").append('<img src="'+uploadedFile+'" />').addClass("show");
+      },3500);
+    }
+  });
+  $(".file_remove").on("click", function(e){
+    $("#uploaded_view").removeClass("show");
+    $("#uploaded_view").find("img").remove();
+    btnOuter.removeClass("file_uploading");
+    btnOuter.removeClass("file_uploaded");
+  });</script>
 </html>

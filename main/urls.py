@@ -34,6 +34,7 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('blog_article/', views.blog_article, name='blog_article'),
     path('responds/', views.RespondsListView.as_view(), name='responds'),
+    path('responds_companies/', views.RespondsCompaniesListView.as_view(), name='responds_companies'),
     path('add_responder/', views.add_responders, name='add responder'),
     path('offers/', views.offers, name='offers'),
     path('chatbox/', views.chatbox, name='chatbox'),

@@ -2,10 +2,10 @@ from django import forms
 from .models import CustomUser, Profile, Role, Ad
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
-from django.forms import ImageField, FileInput
+from django.forms import ImageField, FileInput,ClearableFileInput
 
 class ProfileForm(forms.ModelForm):
-    image_link=ImageField(widget=FileInput)
+    image_link = forms.ImageField(widget=ClearableFileInput(attrs={'id': 'upload_file'}))
     class Meta:
         model = Profile
         fields = ['phone_number', 'role','image_link','description','company_name']
@@ -13,7 +13,7 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             'phone_number': forms.TextInput(
             attrs={
-                'class': 'registration__form__inputs-pair-input',
+                'class': 'authorization__wrapper-block-form__pair-input',
                 'placeholder': 'Введите номер телефона'
             }),
             'description': forms.Textarea(
@@ -38,24 +38,25 @@ class CustomUserForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={
-                    'class': 'registration__form__inputs-pair-input',
+                    'class': 'authorization__wrapper-block-form__pair-input',
                     'placeholder': 'Введите имя'
                 }),
             'surname': forms.TextInput(
                 attrs={
-                    'class': 'registration__form__inputs-pair-input',
+                    'class': 'authorization__wrapper-block-form__pair-input',
                     'placeholder': 'Введите фамилию'
                 }),
             'email': forms.EmailInput(
                 attrs={
-                    'class': 'registration__form__inputs-pair-input',
+                    'class': 'authorization__wrapper-block-form__pair-input',
                     'placeholder': 'Введите почту'
                 }),
             'password': forms.PasswordInput(
                 attrs={
-                    'class': 'registration__form__inputs-pair-input',
+                    'class': 'authorization__wrapper-block-form__pair-input',
                     'placeholder': 'Введите пароль'
                 }),
+
         }
 
     def init(self, *args, **kwargs):
