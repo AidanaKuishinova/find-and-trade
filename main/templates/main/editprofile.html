@@ -25,14 +25,33 @@
                  height:250px;
                  border: solid 1px #CCC">
                  {% endif %}
-                    <div class="picedit">
+                  <div class="file-upload" style="display:flex;     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;">
+                         <div class="picedit">
+                         <div class="panel">
+                          <div class="button_outer">
+                            <div class="btn_upload">
+                              <input type="file" name="image_link" id="upload_file" label="" accept="image/*"> Загрузить фото
+                            </div>
+                            <div class="processing_bar"></div>
+                            <div class="success_box"></div>
+                          </div>
+                         </div>
+                        <div class="error_msg"></div>
 
-                        {{forms.profile_form.image_link}}
-                        <p id="delete">
-                            <a href="{% url 'delete_photo' %}">Удалить фото</a>
-                        </p>
+                        </div>
 
-                    </div>
+
+                            <a href="{% url 'delete_photo' %}"><div class="button_outer" style="display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;">Удалить фото   </div></a>
+
+            </div>
+
+
                 </div>
                 <div class="editright">
 
@@ -175,4 +194,30 @@
     </footer>
     </main>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script> var btnUpload = $("#upload_file"),
+    btnOuter = $(".button_outer");
+  btnUpload.on("change", function(e){
+    var ext = btnUpload.val().split('.').pop().toLowerCase();
+    if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+      $(".error_msg").text("Not an Image...");
+    } else {
+      $(".error_msg").text("");
+      btnOuter.addClass("file_uploading");
+      setTimeout(function(){
+        btnOuter.addClass("file_uploaded");
+      },3000);
+      var uploadedFile = URL.createObjectURL(e.target.files[0]);
+      setTimeout(function(){
+        $("#uploaded_view").append('<img src="'+uploadedFile+'" />').addClass("show");
+      },3500);
+    }
+  });
+  $(".file_remove").on("click", function(e){
+    $("#uploaded_view").removeClass("show");
+    $("#uploaded_view").find("img").remove();
+    btnOuter.removeClass("file_uploading");
+    btnOuter.removeClass("file_uploaded");
+  });</script>
 {% endblock %}

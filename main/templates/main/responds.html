@@ -21,8 +21,9 @@
 
 
             <div class="notifs">
+                {% for i in object_list %}
+
                 <div class="grid-container">
-                    {% for i in object_list %}
                     <div class="grid-item">
                         <h3>{{i.title}}</h3>
                         <p>{{i.user.profile.company_name}}</p>

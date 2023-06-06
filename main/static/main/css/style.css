@@ -406,7 +406,7 @@ nav {
   justify-content: space-evenly;
 }
 .long__reviews__items-item {
-  height: 300px;
+  height: 100%;
   width: 330px;
   background: #FFFFFF;
   border: 1px solid #BDF2E8;

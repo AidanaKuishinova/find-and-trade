@@ -21,32 +21,42 @@
 
 
             <div class="notifs">
+                    {% for i in responds %}
+
                 <div class="grid-container" style="grid-template-columns: 20% 20% 20% 20% 20%;">
-                    {% for i in object_list %}
                     <div class="grid-item">
-                        <h3>{{i.title}}</h3>
+                        <a href="{% url 'other_user_profile' id=i.user.id %}"><h3>{{i.user.name}} {{i.user.surname}}</h3></a>
+
                         <p>{{i.user.profile.company_name}}</p>
                     </div>
                     <div class="grid-item" id="onwait">
-                        {% for respond in i.responders.all %}
-                            {% if respond.user == request.user %}
-                                {{ respond.state }}
-                            {% endif %}
-                        {% endfor %}
+                        {{ i.state }}
                     </div>
                     <div class="grid-item">
-                        <p>{% for respond in i.responders.all %}
-                            {% if respond.user == request.user %}
-                                {{ respond.create_date }}
-                            {% endif %}
-                            {% endfor %}
+                        <p>{{ i.create_date }}
                         </p>
                     </div>
                     <div class="grid-item">
-                        <input type="button" value="Принять">
+                        <form action="{% url 'set_state' %}" method="post" class="success_form">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{i.id}}">
+                            <input type="hidden" name="user_id" value="{{i.user.id}}">
+                            <input type="hidden" name="state_id" value="1">
+                            <input type="hidden" name="current_user_id" value="{{request.user.id}}">
+                            <button type="submit"><input type="button" value="Принять"></button>
+                        </form>
+
                     </div>
                      <div class="grid-item">
-                        <input type="button" value="Отказать">
+                         <form action="{% url 'set_state' %}" method="post" class="decline_form">
+                                                         {% csrf_token %}
+
+                            <input type="hidden" name="id" value="{{i.id}}">
+                             <input type="hidden" name="user_id" value="{{i.user.id}}">
+                             <input type="hidden" name="current_user_id" value="{{request.user.id}}">
+                            <input type="hidden" name="state_id" value="2">
+                            <button type="submit"><input type="button" value="Отказать"></button>
+                        </form>
                     </div>
                 </div>
                 {% endfor %}
@@ -56,6 +66,74 @@
     </main>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    let input_message = $('.message_input')
+    let message_body = $('.chatbox')
+    let success_form = $('.success_form')
+    let decline_form = $('.decline_form')
 
+    let loc = window.location
+    let wsStart = 'ws://'
+
+    if(loc.protocol === 'https') {
+        wsStart = 'wss://'
+    }
+
+    let endpoint = wsStart + loc.host + "/chat/"
+
+    var socket = new WebSocket(endpoint)
+
+    socket.onopen = async function(e){
+    console.log('open', e)
+    success_form.on('submit', async function (e){
+
+    let form_data = {};
+    for (let t of e.delegateTarget){
+        form_data[t.name] = t.defaultValue
+    }
+    console.log(form_data)
+    let thread_id = await $.get(`http://127.0.0.1:8000/get_thread/${form_data.user_id}/${form_data.current_user_id}/`)
+      let message = 'Ваша заявка расмотрена и вы приняты!'
+      let send_to = form_data.user_id
+
+      let data = {
+          'message': message,
+          'sent_by': form_data.current_user_id,
+          'send_to': send_to,
+          'thread_id': thread_id.id
+      }
+      console.log(data);
+      data = JSON.stringify(data)
+      console.log(data)
+      socket.send(data)
+    })
+        decline_form.on('submit', async function (e){
+
+    let form_data = {};
+    for (let t of e.delegateTarget){
+        form_data[t.name] = t.defaultValue
+    }
+    console.log(form_data)
+    let thread_id = await $.get(`http://127.0.0.1:8000/get_thread/${form_data.user_id}/${form_data.current_user_id}/`)
+      let message = 'Большое спасибо за потраченное Вами Время. К сожалению, в настоящий момент мы не готовы с Вами сотрудничать. Ваше резюме будет сохранено,и возможно мы вернемся к вашей кандидатуре. С уважением, {{request.user.profile.company_name}} '
+      let send_to = form_data.user_id
+
+      let data = {
+          'message': message,
+          'sent_by': form_data.current_user_id,
+          'send_to': send_to,
+          'thread_id': thread_id.id
+      }
+      console.log(data);
+      data = JSON.stringify(data)
+      console.log(data)
+      socket.send(data)
+    })
+    }
+
+
+
+</script>
 </html>
 {% endblock %}

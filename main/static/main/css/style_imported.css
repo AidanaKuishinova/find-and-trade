@@ -5,6 +5,7 @@
     --bs--gradient_two: linear-gradient(45deg, rgba(255, 255, 255, 0.8724440459777661) 15%, rgba(86, 128, 233, 0.7015756986388305) 84%);
     --bs--gradient_three: linear-gradient(45deg, rgba(255, 255, 255, 0.8724440459777661) 15%, rgba(109, 177, 232, 0.702) 90%);
     --bs--gradient_four: linear-gradient(45deg, #68C9C9, #5680E9);
+    --bs--gradient_five: linear-gradient(90deg, rgba(132,206,235,0.5024860285911239) 27%, rgba(104,201,201,0.5) 47%, rgba(90,185,234,0.5) 63%, rgba(86,128,233,0.5) 78%);
     --bs--lapisblue: #5680E9;
     --bs-darkblue: #152243;
     --bs-sea: #072A82;
@@ -99,15 +100,16 @@ display: none;
   font-size: 15px;
 }
 .newadouterdiv{
-  height: 400px;
-  width: 1270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   margin: 0px auto;
   margin-top: 20px;
 }
 .newadleft{
-  height: 400px;
-  width: 50%;
-  float: left;
+      display: flex;
+    width: 500px;
+    flex-direction: column;
 }
 .newadright{
   height: 400px;
@@ -127,7 +129,6 @@ display: none;
 /* стили для input */
 .text-field__input {
   display: block;
-  width: 80%;
   height: 40px;
   padding: 10px 15px;
   font-size: 15px;
@@ -152,7 +153,6 @@ display: none;
 }
 #id_description{
   display: block;
-  width: 80%;
   height: 130px;
   resize: none;
   padding: 10px 15px;
@@ -161,6 +161,7 @@ display: none;
   border: 1px solid #399DC5;
   border-radius: 7px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 20px;
 }
 #id_description:focus {
   color: #212529;
@@ -193,9 +194,7 @@ display: none;
   object-fit: contain;
 }
 
-.file-upload img{
-  width: 2.5%;
-}
+
 .file-upload{
   margin-top: 10px;
   margin-bottom: 20px;
@@ -403,7 +402,7 @@ border-radius: 10px;
   color: var(--bs-grayblue);
 }
 #onwait {
-  color: var(--bs-yellow);
+  color: var(--bs-grayblue);
   font-weight: 500;
 }
 
@@ -543,6 +542,7 @@ border-radius: 10px;
 }
 
 .editsave button {
+  margin: auto;
   background-color: var(--bs-blue);
   color: #fff;
   font-size: 20px;
@@ -701,7 +701,6 @@ border-radius: 10px;
 .message p {
     position: relative;
     right: 0;
-    text-align: right;
     max-width: 50%;
     background: white;
     padding: 10px 15px;
@@ -1455,6 +1454,7 @@ border-radius: 10px;
   font-size: 22px;
   cursor: pointer;
   color: #fff;
+  margin-top: 20px;
   transition: .2s;
 }
 .ad_details_desc button:hover{
@@ -1698,9 +1698,9 @@ border-radius: 10px;
 /* ! --- FAVS --- ! */
 #favpage{
   margin-top: 4%;
-  margin-left: 8%;
+  margin-left: 12%;
   font-weight: bold;
-  color: var(--bs--blue);
+  color: #072A82;
 }
 .favorites{
   width: 83%;

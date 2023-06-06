@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from django.forms import ImageField, FileInput,ClearableFileInput
 
 class ProfileForm(forms.ModelForm):
-    image_link = forms.ImageField(widget=ClearableFileInput(attrs={'id': 'upload_file'}))
+    image_link = forms.ImageField(widget=ClearableFileInput(attrs={'id': 'upload_file', 'label': ''}))
     class Meta:
         model = Profile
         fields = ['phone_number', 'role','image_link','description','company_name']

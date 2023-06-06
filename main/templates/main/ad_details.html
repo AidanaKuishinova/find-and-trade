@@ -54,14 +54,23 @@
           <div class="ad_details_desc_title">
             <p><b>Цена: </b>от {{object.cost}}тг</p>
           </div>
+            {% if request.user.is_authenticated %}
+                {% if request.user == object.user %}
+                    <a href="{% url 'responds_companies' id=object.id %}"><button >Посмотреть отклики</button></a>
+                {% else %}
+                        {% if not isResponded %}
+                            <form action="/add_responder/" method="POST">
+                                {% csrf_token %}
+                                <input type="text" name="id_ad" value="{{object.id}}" hidden>
+                                <input type="text" name="id_user" value="{{request.user.id}}" hidden>
+                                <button>Откликнуться</button>
+                            </form>
+                        {% else %}
+                            <button disabled>Вы уже откликнулись!</button>
+                        {% endif %}
 
-            <form action="/add_responder/" method="POST">
-                {% csrf_token %}
-                <input type="text" name="id_ad" value="{{object.id}}" hidden>
-                <input type="text" name="id_user" value="{{request.user.id}}" hidden>
-
-                    <button>Откликнуться</button>
-            </form>
+                {% endif %}
+            {% endif %}
         </div>
       </div>
     </main>

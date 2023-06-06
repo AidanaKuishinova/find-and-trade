@@ -1,5 +1,6 @@
 import uuid
 
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from .models import CustomUser, Profile, Ad, RespondState
 from django.urls import reverse_lazy, reverse
@@ -203,6 +204,11 @@ class DetailAdView(DetailView):
         id= self.kwargs.get("id", None)
         return Ad.objects.get(id=id)
 
+    def get_context_data(self, **kwargs):
+        ctx = super(DetailAdView, self).get_context_data(**kwargs)
+        current_ad = self.get_object()
+        ctx['isResponded'] = current_ad.responders.filter(user=self.request.user).exists
+        return ctx
 
 
 class ActiveAdListView(ListView):
@@ -242,6 +248,8 @@ class RespondsListView(ListView):
         )
         return new_context
 
+
+
 class RespondsCompaniesListView(ListView):
     template_name = "main/responds_companies.html"
     model = Ad
@@ -252,6 +260,38 @@ class RespondsCompaniesListView(ListView):
             is_active=True
         )
         return new_context
+
+
+class RespondsCompaniesDetailView(DetailView):
+    template_name = "main/responds_companies.html"
+    model = Ad
+
+    def get_object(self, queryset=None):
+        id= self.kwargs.get("id", None)
+        return Ad.objects.get(id=id)
+
+    def get_context_data(self, **kwargs):
+        ctx = super(RespondsCompaniesDetailView, self).get_context_data(**kwargs)
+        current_ad = self.get_object()
+        ctx['responds'] = current_ad.responders.all()
+        return ctx
+
+def set_state(request):
+    if request.method == "POST":
+        id = request.POST.get("id")
+        state_id = request.POST.get("state_id")
+        respond = Respond.objects.get(id=id)
+        if state_id == "1":
+            respond.state = RespondState.ACCEPTED
+        else:
+            respond.state = RespondState.DECLINED
+        respond.save()
+        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+def get_thread(request, first_id, second_id):
+    data = Thread.objects.get(first_person__id=first_id, second_person__id=second_id)
+    return JsonResponse({'id': data.id})
+
 
 def add_responders(request):
     if request.method == "POST":
