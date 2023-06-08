@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Категории</title>
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style_imported.css' %}">
 
 </head>
 <body>
@@ -25,9 +26,12 @@
             <h1 class="categories__container-heading">Результаты поиска {{request.GET.q}}</h1>
             <div class="search__result-wrapper">
                 <div class="search__result-wrapper-sorting">
-                    <form action="{% url 'searchresult' %}" method="GET" class="search__result-wrapper-sorting-form">
+                    <form action="{% url 'searchresult' %}" method="GET" class="search__result-wrapper-sorting-form" style="display: flex;
+                        flex-direction: column;
+                        align-items: center;">
+                        <input type="hidden" name="q" value="{{ request.GET.q }}">
                         <div class="search__result-wrapper-sorting-form__element">
-                            Сортировка <select name="filter_type" id="filter_type">
+                            Сортировка <select name="filter_type" id="filter_type" class="multiple-select">
                             <option value="price_down">По цене(убывание)</option>
                             <option value="price_up">По цене(возрастание)</option>
                             <option value="alphabet">По алфавиту от А-Я</option>
@@ -37,9 +41,24 @@
 
                         </div>
                         <div class="search__result-wrapper-sorting-form__element">
-                            Фильтры
+                            Фильтр
+                              <input type="hidden" id="id_q" name="q" value="{{ request.GET.q }}">
+
+                              <select id="id_category" name="category" multiple class="multiple-select">
+                                {% for category in categories %}
+                                  <option value="{{ category.slug }}">{{ category.name }}</option>
+                                {% endfor %}
+                              </select>
                         </div>
-                        <button type="submit">Применить</button>
+                        <button type="submit" style=" margin: auto;
+                            background-color: rgba(86, 128, 233, 0.7);
+                            color: #fff;
+                            font-size: 20px;
+                            border: none;
+                            border-radius: 10px;
+                            padding: 10px;
+                            margin-bottom: 20px;
+                            cursor: pointer;">Применить</button>
                         {% csrf_token%}
                     </form>
                 </div>

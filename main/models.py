@@ -140,11 +140,11 @@ class Ad(models.Model):
     image_link = models.ImageField(upload_to=user_image_directory_path, blank=True, null=True,
                                    verbose_name="Ad image")
     cost= models.FloatField(verbose_name="Cost")
-    responders= models.ManyToManyField(Respond)
+    responders= models.ManyToManyField(Respond, blank=True, null=True)
     create_date = models.DateField(auto_now_add=True, verbose_name="Creation date")
     edit_date = models.DateField(auto_now=True, verbose_name="Edit date")
     is_active = models.BooleanField(default=True, verbose_name="Active")
-    category=models.OneToOneField(Category, blank=True, null=True, on_delete=models.CASCADE)
+    category=models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

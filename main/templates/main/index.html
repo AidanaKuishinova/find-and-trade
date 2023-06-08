@@ -35,7 +35,7 @@
                     <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" class="trades-item__img">
                     {% endif %}
                     <div class="trades-item__name">{{ad.title}}</div>
-                    <button class="trades-item__btn"><a href="{% url 'ad_details' id=ad.id %}"> Подробнее </a></button>
+                    <button class="trades-item__btn"><a href="{% url 'ad_details' id=ad.id %}" class="more_a"> Подробнее </a></button>
                 </div>
                 {% endfor %}
             </div>

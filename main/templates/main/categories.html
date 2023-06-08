@@ -15,62 +15,87 @@
 </head>
 <body>
     <div class="categories__container">
-            <form action="" class="categories__container-search__wrapper">
+            <form  action="{% url 'searchresult' %}" class="categories__container-search__wrapper">
                 <div class="categories__container-search__wrapper-inputs">
+
                     <button type="submit" class="categories__container-search__wrapper-input__icon"></button>
-                    <input type="text" class="categories__container-search__wrapper-input" placeholder="Введите слово для поиска">
+                    <input name="q" type="text" class="categories__container-search__wrapper-input" placeholder="Введите слово для поиска">
+
                 </div>   
             </form>
             <h1 class="categories__container-heading">Категории</h1>
-            <div class="categories__container-wrapper">
-                <div class="categories__container-wrapper-card" id="cooking">
-                    <div class="categories__container-wrapper-card-name">
-                        Кулинария
-                    </div>
-                </div>
 
-                <div class="categories__container-wrapper-card" id="marketing">
-                    <div class="categories__container-wrapper-card-name">
-                        Маркетинг
+            <div class="categories__container-wrapper">
+                <a href="{% url 'searchresult' %}?category=baking">
+                       <div class="categories__container-wrapper-card" id="cooking">
+                            <div class="categories__container-wrapper-card-name">
+                                Кулинария
+                            </div>
+                        </div>
+                </a>
+
+                <a href="{% url 'searchresult' %}?category=baking">
+                    <div class="categories__container-wrapper-card" id="marketing">
+                        <div class="categories__container-wrapper-card-name">
+                            Маркетинг
+                        </div>
                     </div>
-                </div>
+                </a>
+                                </a>
+
+                <a href="{% url 'searchresult' %}?category=baking">
 
                 <div class="categories__container-wrapper-card" id="restaurant">
                     <div class="categories__container-wrapper-card-name">
                         Кафе и рестораны
                     </div>
                 </div>
+                                    </a>
+
+                                    <a href="{% url 'searchresult' %}?category=baking">
 
                 <div class="categories__container-wrapper-card" id="buildings">
                     <div class="categories__container-wrapper-card-name">
                         Строительство
                     </div>
                 </div>
+                                                        </a>
+
+                <a href="{% url 'searchresult' %}?category=baking">
 
                 <div class="categories__container-wrapper-card" id="it">
                     <div class="categories__container-wrapper-card-name">
                         IT сфера
                     </div>
                 </div>
+                                    </a>
+
+                <a href="{% url 'searchresult' %}?category=baking">
 
                 <div class="categories__container-wrapper-card" id="health">
                     <div class="categories__container-wrapper-card-name">
                         Красота и здоровье
                     </div>
                 </div>
+                                    </a>
+
+                <a href="{% url 'searchresult' %}?category=baking">
 
                 <div class="categories__container-wrapper-card" id="office">
                     <div class="categories__container-wrapper-card-name">
                         Офис
                     </div>
                 </div>
+                                    </a>
+
+                <a href="{% url 'searchresult' %}?category=baking">
 
                 <div class="categories__container-wrapper-card" id="furniture">
                     <div class="categories__container-wrapper-card-name">
                         Мебель
                     </div>
                 </div>
-                
+                </a>
             </div>
     </div>
      <footer class="footer">

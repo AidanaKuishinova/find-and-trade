@@ -883,13 +883,13 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 264px;
-  height: 43.05px;
+  flex-direction: column;
   background: rgba(86, 128, 233, 0.7);
   border-radius: 30px;
   text-align: center;
   font-size: 18px;
   margin-bottom: 20px;
+  width: 75%;
 }
 .categories__container .search__result-wrapper-sorting-form__element:last-child {
   margin-bottom: 0;
@@ -1572,4 +1572,8 @@ nav {
 
 .active_page{
   opacity: 1 !important;
+}
+
+.more_a:hover{
+    color: #5680E9;
 }

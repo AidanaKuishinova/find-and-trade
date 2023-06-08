@@ -2,7 +2,7 @@ import uuid
 
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
-from .models import CustomUser, Profile, Ad, RespondState
+from .models import CustomUser, Profile, Ad, RespondState, Category
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, UpdateView,DetailView
 from django.views.generic.base import TemplateView
@@ -133,9 +133,10 @@ class ProfileUpdateView(MultiModelFormView, UpdateView):
         return forms
 
 
+
 class AdEditView(UpdateView):
     template_name = "main/edit_ad.html"
-    model=Ad
+    model = Ad
     form_class = AdCreateForm
 
 
@@ -174,28 +175,35 @@ class SearchResultView(ListView):
     template_name = "main/search_result.html"
     model = Ad
     paginate_by = 16
+    def get_context_data(self, **kwargs):
+        ctx = super(SearchResultView, self).get_context_data(**kwargs)
+        ctx['categories'] = Category.objects.all()
+        return ctx
 
     def get_queryset(self):
-        query=self.request.GET.get("q")
-        if query:
-            object_list=Ad.objects.filter(
-                Q(title__icontains=query)
-            )
-            print(self.request.GET)
-        if self.request.GET.get("filter_type"):
-            filter_type=self.request.GET.get("filter_type")
-            if filter_type== "price_down":
-                object_list = Ad.objects.order_by('-cost')
-            if filter_type == "price_up":
-                object_list = Ad.objects.order_by('cost')
-            if filter_type == "alphabet":
-                object_list = Ad.objects.order_by('title')
-            if filter_type == "create_date":
-                object_list = Ad.objects.order_by('-create_date')
-        else:
-            object_list=Ad.objects.all()
-        return object_list
+        query = self.request.GET.get("q")
+        filter_type = self.request.GET.get("filter_type")
+        categories = self.request.GET.getlist("category")
 
+        object_list = Ad.objects.all()
+
+        if query:
+            object_list = object_list.filter(Q(title__icontains=query))
+
+        if filter_type:
+            if filter_type == "price_down":
+                object_list = object_list.order_by('-cost')
+            elif filter_type == "price_up":
+                object_list = object_list.order_by('cost')
+            elif filter_type == "alphabet":
+                object_list = object_list.order_by('title')
+            elif filter_type == "create_date":
+                object_list = object_list.order_by('-create_date')
+
+        if categories:
+            object_list = object_list.filter(category__slug__in=categories)
+
+        return object_list
 
 class DetailAdView(DetailView):
     template_name = "main/ad_details.html"

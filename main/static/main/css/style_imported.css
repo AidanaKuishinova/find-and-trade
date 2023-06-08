@@ -1381,6 +1381,31 @@ border-radius: 10px;
   color: #fff;
 }
 
+.multiple-select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.multiple-select option {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background-color: #f9f9f9;
+}
+
+.multiple-select option:hover {
+  background-color: #eee;
+}
+
+.multiple-select option:selected {
+  background-color: #ccc;
+  color: white;
+}
 /* ! --- SEARCH RESULTS2 --- ! */
 
 /* ! --- ADD DETAILS --- ! */
@@ -2396,7 +2421,9 @@ border-radius: 10px;
 
 /* ! ---  LOADING  --- ! */
 
-
+.more_a:hover{
+    color: blue;
+}
 .panel { max-width: 500px; text-align: center;}
 .button_outer {background: #83ccd3; border-radius:30px; text-align: center; height: 50px; width: 200px; display: inline-block; transition: .2s; position: relative; overflow: hidden;}
 .btn_upload {padding: 17px 30px 12px;  font-size: 15px; color: #fff; text-align: center; position: relative; display: inline-block; overflow: hidden; z-index: 3; white-space: nowrap;}

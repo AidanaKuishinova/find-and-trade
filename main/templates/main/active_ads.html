@@ -36,7 +36,7 @@
               <p>{{i.create_date|date:'d/m/Y'}}</p>
             </div>
             <div class="ads-actions">
-              <a href="#"><p style="background-color: #35DABA">Редактировать</p></a>
+              <a href="{% url 'edit ad' pk=i.id %}"><p style="background-color: #35DABA">Редактировать</p></a>
               <form action="{% url 'archive_ad'%}" method="post">
                 <input type="hidden" value="{{i.id}}" name="id">
                 <button><p style="background-color: #FF3E3E; color: white;">Архивировать</p></button>
