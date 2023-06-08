@@ -531,23 +531,7 @@ nav {
 .footer__links-column__list-item__link:hover {
   color: #5680E9;
 }
-.footer__links-column__langs {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-.footer__links-column__langs-item {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  color: #FFFFFF;
-  cursor: pointer;
-  transition: 0.3s all;
-}
-.footer__links-column__langs-item:hover {
-  color: #5680E9;
-}
+
 .footer__social-logo {
   font-family: "Bebas Neue";
   font-style: normal;
