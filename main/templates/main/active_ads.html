@@ -17,18 +17,11 @@
           <div class="card">
             <div class="ad_image">
               {% if i.image_link.file is not None     %}
-              <img src="{{i.image_link.url}}" alt="" style="object-fit:cover;
-              object-position: right;
-                 width:250px;
-                 height:250px;
-                 border: solid 1px #CCC">
+              <img class="adimg"src="{{i.image_link.url}}" alt="">
               {% else %}
-              <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="object-fit:cover;
-              object-position: right;
-                 width:250px;
-                 height:250px;
-                 border: solid 1px #CCC">
-          
+              <img class="adimg" src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="
+                 border: solid 1px #CCC;">
+
               {% endif %}
             </div>
             <div class="adtext">
