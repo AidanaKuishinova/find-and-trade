@@ -1,5 +1,6 @@
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,37 +9,50 @@
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 
     {% block links %} {% endblock %}
- </head>
-<body >
+</head>
+
+<body>
+
+
     <header class="header">
-        <div class="container">
-            <div class="header__wrapper">    
-                <a href="{% url 'index' %}" class="header__logo">find-n-trade</a>
-    
-                <nav>
-                    <ul class="header__list">
-                        <li class="header__list-item"><a href="{% url 'categories' %} " class="header_list-item__link">Категории</a></li>
-                        <li class="header__list-item"><a href="{% url 'blog' %} " class="header_list-item__link">Блог</a></li>
-                        <li class="header__list-item"><a href="{% url 'about_us' %} " class="header_list-item__link">О нас</a></li>
-                        <li class="header__list-item"><a href="{% url 'contact' %}" class="header_list-item__link">Контакты</a></li>
-                    </ul>
-                </nav>
-    
-                <div class="header__settings">
-                    <img src="{% static 'main/icons/location.svg' %}" alt="location" class="header__settings-loc">
-                    {% if user.is_authenticated %}
-                        <a href=" {% url 'profile' %}  "><img src="{% static 'main/icons/profile.svg' %}" alt="profile" class="header__settings-profile"></a>
-                        {% else %}
-                        <a href="{% url 'login' %} "><img src="{% static 'main/icons/profile.svg' %}" alt="profile" class="header__settings-profile"></a>
-                    {% endif %}
-                </div>
-            </div>
-    
-    
+
+        <div class="sitelogo">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'main/icons/Find-n-trade.png' %}" alt="">
+            </a>
         </div>
+
+
+
+        <div class="navigation">
+
+            <input type="checkbox" name="" id="" class="toggle-menu">
+            <div class="hamburger"></div>
+            <ul class="navmenu">
+                <li><a href="{% url 'categories' %}">Категории</a></li>
+                <li><a href="{% url 'blog' %}">Блог</a></li>
+                <li><a href="{% url 'about_us' %}">О нас</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="navicons">
+            <a href="#"><img src="{% static 'main/icons/location.png' %}" alt=""></a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}  "><img src="{% static 'main/icons/user.png' %}"></a>
+            {% else %}
+            <a href="{% url 'register' %} "><img src="{% static 'main/icons/user.png' %}" alt="profile"
+                    class="header__settings-profile"></a>
+            {% endif %}
+        </div>
+
     </header>
+
+
+    
     {% block content %}
 
     {% endblock %}
 </body>
+
 </html>
