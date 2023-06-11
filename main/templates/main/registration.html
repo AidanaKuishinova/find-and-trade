@@ -66,26 +66,6 @@
                             </div>
                         {% endfor%}
                     </div>
-              <div class="registration__form__inputs-pair" style="width: 100%; color:white;">
-                        <label for="photo" style="margin: 9px 0px;     text-align: left;">Фото профиля</label>
-
-                        <div class="picedit">
-                         <div class="panel">
-                          <div class="button_outer">
-                            <div class="btn_upload">
-                               {{forms.profile_form.image_link}} Upload Image
-                            </div>
-                            <div class="processing_bar"></div>
-                            <div class="success_box"></div>
-                          </div>
-                         </div>
-                        <div class="error_msg"></div>
-                        <div class="uploaded_file_view" id="uploaded_view">
-                          <span class="file_remove">X</span>
-                        </div>
-                        </div>
-                     </div>
-
                     {% if form.errors %}
                         <div class="authorization__wrapper-block-form-error">Неверный email или пароль</div>
                     {% endif %}
@@ -98,7 +78,7 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-<script> var btnUpload = $("#upload_file"),
+<script> var btnUpload = $("#image_link"),
     btnOuter = $(".button_outer");
   btnUpload.on("change", function(e){
     var ext = btnUpload.val().split('.').pop().toLowerCase();

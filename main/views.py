@@ -97,7 +97,7 @@ class ProfileUpdateView(MultiModelFormView, UpdateView):
         'custom_user_form': CustomUserEditForm,
         'profile_form': ProfileForm,
     }
-    success_url = reverse_lazy('profile edit')
+    success_url = reverse_lazy('profile')
 
     def get_context_data(self, **kwargs):
         ctx = super(ProfileUpdateView, self).get_context_data(**kwargs)
@@ -164,7 +164,7 @@ class MyLogoutView(LogoutView):
 class AdCreateView(CreateView):
     template_name = "main/create_ad.html"
     form_class = AdCreateForm
-    success_url = reverse_lazy('ad list')
+    success_url = reverse_lazy('active ads')
 
 
 class AdListView(ListView):
@@ -174,7 +174,7 @@ class AdListView(ListView):
 class SearchResultView(ListView):
     template_name = "main/search_result.html"
     model = Ad
-    paginate_by = 16
+    paginate_by = 8
     def get_context_data(self, **kwargs):
         ctx = super(SearchResultView, self).get_context_data(**kwargs)
         ctx['categories'] = Category.objects.all()
@@ -185,7 +185,7 @@ class SearchResultView(ListView):
         filter_type = self.request.GET.get("filter_type")
         categories = self.request.GET.getlist("category")
 
-        object_list = Ad.objects.all()
+        object_list = Ad.objects.filter(is_active=True)
 
         if query:
             object_list = object_list.filter(Q(title__icontains=query))
@@ -297,7 +297,10 @@ def set_state(request):
         return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 def get_thread(request, first_id, second_id):
-    data = Thread.objects.get(first_person__id=first_id, second_person__id=second_id)
+    try:
+        data = Thread.objects.get(first_person__id=first_id, second_person__id=second_id)
+    except:
+        data = Thread.objects.get(first_person__id=second_id, second_person__id=first_id)
     return JsonResponse({'id': data.id})
 
 
@@ -487,6 +490,13 @@ class FavouriteAdView(ListView):
     model = FavoriteAd
 
 def favs_delete(request):
-    favorite_ad = FavoriteAd.objects.get(id=request.POST["id"])
+    favorite_ad = FavoriteAd.objects.get(id=int(request.POST["id"]))
     favorite_ad.delete()
+    return redirect("favs")
+
+def favs_add(request):
+    print(Ad.objects.get(id=request.POST["id"]))
+    print(request.user)
+    favorite_ad = FavoriteAd(user=request.user, ad=Ad.objects.get(id=request.POST["id"]))
+    favorite_ad.save()
     return redirect("favs")

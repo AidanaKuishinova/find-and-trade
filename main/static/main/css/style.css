@@ -1531,7 +1531,7 @@ nav {
 }
 
 .pages {
-
+  margin-bottom: 30px;
   display: flex;
   column-gap: 10px;
   align-items: center;
@@ -1543,11 +1543,11 @@ nav {
   text-align: center;
   font-size: 15px;
   font-weight: normal;
-  background-color: var(--bs--blue);
+  background-color: var(--bs-blue);
   opacity: 0.5;
   color: white;
-  padding: 4px 9px;
-  border-radius: 30px;
+  padding: 5px 10px;
+  border-radius: 50%;
 }
 
 .pages a {

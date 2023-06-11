@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate
 from django.forms import ImageField, FileInput,ClearableFileInput
 
 class ProfileForm(forms.ModelForm):
-    image_link = forms.ImageField(widget=ClearableFileInput(attrs={'id': 'upload_file', 'label': ''}))
     class Meta:
         model = Profile
         fields = ['phone_number', 'role','image_link','description','company_name']
@@ -105,7 +104,7 @@ class AuthUserForm(AuthenticationForm, forms.ModelForm):
 class AdCreateForm(forms.ModelForm):
     class Meta:
         model = Ad
-        fields = ['user', 'title', 'company_name', 'image_link', 'description', 'cost']
+        fields = ['user', 'title', 'company_name', 'image_link', 'description', 'cost','category']
 
         widgets = {
             'user': forms.HiddenInput(),
@@ -133,4 +132,9 @@ class AdCreateForm(forms.ModelForm):
                     'style': "width:50%;"
                 }
             ),
+            'category':forms.Select(
+                attrs={
+                    'class':'multiple-select ad_create'
+                }
+            )
         }

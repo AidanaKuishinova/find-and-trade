@@ -43,6 +43,7 @@ urlpatterns = [
     path('support_chat/', views.support_chat, name='support_chat'),
     path('favs/', views.FavouriteAdView.as_view(), name='favs'),
     path('favs_delete/', views.favs_delete, name='favs_delete'),
+    path('favs_add/', views.favs_add, name='favs_add'),
     path('about_us/', views.about_us, name='about_us'),
 
     path('chat/', views.chatt, name='chat'),

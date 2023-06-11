@@ -13,7 +13,7 @@
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 </head>
 
-<body>
+<body background="{% static 'main/images/bg5.png' %}">
     <main>
       <h1 id="favpage">Избранное</h1>
       <div class="favorites">
@@ -36,7 +36,7 @@
 
           </div>
           <div class="fav_desc">
-            <a href="#"><h2>{{i.ad.title}}</h2></a>
+            <a href="{% url 'ad_details' id=i.ad.id %}"><h2>{{i.ad.title}}</h2></a>
             <div><h3>от {{i.ad.cost}} тг</h3></div>
             <div class="descandheart">
               <div id="descandheart_desc">
@@ -44,8 +44,8 @@
               </div>
               <div id="descandheart_heart">
                 <form action="{% url 'favs_delete'%}" method="post">
-                <input type="hidden" value="{{i.ad.id}}" name="id">
-                <button><img src="{% static 'main/icons/Heart.png'%}" alt=""></button>
+                <input type="hidden" value="{{i.id}}" name="id">
+                <button type="submit"><img src="{% static 'main/icons/Heart.png'%}" alt=""></button>
                 {% csrf_token %}
               </form>
               </div>

@@ -13,13 +13,13 @@
             <h2 class="edittitle">Редактирование профиля</h2>
             <div class="editpro">
                 <div class="editleft">
-                      {% if forms.profile_form.image_link.initial is not None %}
+                      {% if forms.profile_form.image_link.initial != "" %}
                     <img src="/media/{{forms.profile_form.image_link.initial}}" alt="" style="object-fit:cover;
                         object-position: right;
                         width:300px;
                  height:300px;
                  border: solid 1px #CCC;
-                 border-radius:15px;">
+                 border-radius:50%;">
                  {% else %}
                  <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="object-fit:cover;
               object-position: right;
@@ -141,47 +141,38 @@
 
             </div>
             <div class="editsave">
-                <a href="{% url 'blog' %}"><button type="submit" onclick=""> Сохранить изменения </button></a>
+               <button type="submit" onclick=""> Сохранить изменения</button>
             </div>
         </form>
-         <footer class="footer">
+             <footer class="footer">
         <div class="container">
             <div class="footer__wrapper">
                 <div class="footer__links">
-                    <div class="footer__links-logo">find-n-trade</div>
-
                     <div class="footer__links__wrapper">
                         <div class="footer__links-column">
                             <ul class="footer__links-column__list">
-                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Главное</a></li>
-                                <li class="footer__links-column__list-item"><a href="reviews.html" class="footer__links-column__list-item__link">Блог</a></li>
-                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">О нас</a></li>
-                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">Категории</a></li>
-                                <li class="footer__links-column__list-item"><a href="#partners" class="footer__links-column__list-item__link">Контакты</a></li>
+                                <li class="footer__links-column__list-item"><a href="{% url 'index' %}" class="footer__links-column__list-item__link">Главное</a></li>
+                                <li class="footer__links-column__list-item"><a href="{% url 'blog' %}" class="footer__links-column__list-item__link">Блог</a></li>
+                                <li class="footer__links-column__list-item"><a href="{% url 'about_us' %}" class="footer__links-column__list-item__link">О нас</a></li>
+                                <li class="footer__links-column__list-item"><a href="{% url 'categories' %}" class="footer__links-column__list-item__link">Категории</a></li>
+                                <li class="footer__links-column__list-item"><a href="{% url 'contact' %}" class="footer__links-column__list-item__link">Контакты</a></li>
                             </ul>
                         </div>
 
                         <div class="footer__links-column">
                             <ul class="footer__links-column__list">
-                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Объявления</a></li>
-                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Реклама на сайте</a></li>
-                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">Условия оказания услуг</a></li>
-                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">Условия использования сайта</a></li>
-                                <li class="footer__links-column__list-item"><a href="#partners" class="footer__links-column__list-item__link">Инвесторам</a></li>
+                                <li class="footer__links-column__list-item"><a href="{% url 'searchresult' %}" class="footer__links-column__list-item__link">Объявления</a></li>
+                                <li class="footer__links-column__list-item"><a href="{% url 'termscond' %}" class="footer__links-column__list-item__link">Условия оказания услуг</a></li>
+                                <li class="footer__links-column__list-item"><a href="#" class="footer__links-column__list-item__link">Условия использования сайта</a></li>
                             </ul>
                         </div>
 
                         <div class="footer__links-column">
                             <ul class="footer__links-column__list">
-                                <li class="footer__links-column__list-item"><a href="#home" class="footer__links-column__list-item__link">Тех.поддержка</a></li>
-                                <li class="footer__links-column__list-item"><a href="#products" class="footer__links-column__list-item__link">Пользовательское соглашение</a></li>
-                                <li class="footer__links-column__list-item"><a href="#strategies" class="footer__links-column__list-item__link">FAQ</a></li>
+                                <li class="footer__links-column__list-item"><a href="{% url 'support_chat' %}" class="footer__links-column__list-item__link">Тех.поддержка</a></li>
+                                <li class="footer__links-column__list-item"><a href="#" class="footer__links-column__list-item__link">FAQ</a></li>
                             </ul>
 
-                            <div class="footer__links-column__langs">
-                                <div class="footer__links-column__langs-item footer__links-column__langs-item_kz">KAZ</div>
-                                <div class="footer__links-column__langs-item footer__links-column__langs-item_en">ENG</div>
-                            </div>
                         </div>
                     </div>
                 </div>
