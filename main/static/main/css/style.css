@@ -536,8 +536,9 @@ nav {
   font-family: "Bebas Neue";
   font-style: normal;
   font-weight: 400;
-  font-size: 64px;
+  font-size: 50px;
   color: #FFFFFF;
+  margin-top: 20px;
 }
 .footer__social__items {
   display: flex;
@@ -545,7 +546,7 @@ nav {
 }
 .footer__social-item {
   object-fit: contain;
-  height: 61px;
+  height: 45px;
   width: 100%;
   cursor: pointer;
   transition: 0.3s all;
@@ -562,7 +563,66 @@ nav {
   color: #FFFFFF;
   text-align: center;
 }
+@media (max-width:1100px) {
+  .footer__links-column {
+    margin-right: 40px;
+  }
+  .footer__wrapper {
+    display: block;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .footer__social-logo {
+    display: block;
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    color: #FFFFFF;
+  }
+  .footer__social__items {
+    display: flex;
+    width: 200px;
 
+  }
+  .footer__social-item {
+    object-fit: contain;
+    height: 45px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s all;
+  }
+}
+@media (max-width:750px) {
+  .footer__links-column {
+    margin-right: 40px;
+  }
+  .footer__wrapper {
+    display: block;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .footer__social-logo {
+    display: block;
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    color: #FFFFFF;
+  }
+  .footer__social__items {
+    display: flex;
+    width: 200px;
+
+  }
+  .footer__social-item {
+    object-fit: contain;
+    height: 45px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s all;
+  }
+}
 #blue {
   position: absolute;
   z-index: -10;
@@ -881,7 +941,7 @@ nav {
 .categories__container .search__result-wrapper-results {
   display: flex;
   width: 100%;
-  gap: 30px;
+  gap: 60px;
   max-width: 1000px;
   flex-wrap: wrap;
   margin-bottom: 52px;
@@ -1023,6 +1083,36 @@ nav {
 .categories__container #health {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url("../icons/categories/health.svg");
 }
+@media (max-width:750px) {
+  .categories__container-search__wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+    height: 100px;
+    background: rgba(90, 185, 234, 0.4);
+    border-radius: 25px;
+    padding: 25px 40px;
+  }
+  .categories__container-search__wrapper-input {
+    height: 50px;
+    border-radius: 20px;
+  }
+  .categories__container-search__wrapper-inputs {
+    position: relative;
+  }
+  .categories__container-search__wrapper-input__icon {
+    cursor: pointer;
+    position: absolute;
+    background-image: url("../icons/search.svg");
+    background-repeat: no-repeat;
+    height: 35px;
+    width: 35px;
+    right: 30;
+    top: 10;
+  }
+}
+
+
 
 .reviews {
   padding: 82px 0 99px 0;
