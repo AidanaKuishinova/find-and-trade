@@ -119,6 +119,10 @@ nav {
   height: 80px;
   font-size: 48px;
 }
+.btn_find:hover a{
+    color: #5AB9EA;
+}
+
 .btn_reviews {
   margin-top: 70px;
   width: 350px;
@@ -224,6 +228,7 @@ nav {
   border-radius: 18px;
 }
 .trades-item__name {
+  height: 75px;
   margin-top: 17px;
   font-family: "Inter";
   font-style: normal;
@@ -246,10 +251,16 @@ nav {
   height: 37px;
   font-size: 18px;
 }
+
+
 .trades-item__btn:hover {
   background: #fff;
   color: #5680E9;
   border: 1px solid #5680E9;
+}
+
+.trades-item__btn:hover a {
+    color: #5680E9;
 }
 
 .long {
@@ -1581,6 +1592,7 @@ header {
 }
 
 .header {
+  height: 100px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -1622,7 +1634,7 @@ header {
   text-decoration: none;
   display: block;
   padding: 50px 40px;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 600;
   line-height: 1;
   transform: 0.3s;
@@ -1769,7 +1781,7 @@ header {
 }
 
 .navicons a img {
-  height: 50px;
+  height: 40px;
   padding: 0 50px 0 0;
 }
 

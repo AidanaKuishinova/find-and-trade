@@ -39,10 +39,7 @@
                  height:250px;">
 
               <img src="{{object.image_link.url}}" alt="" >
-                 {% else %}
-                 <img src="{% static 'main/img/no-image-removebg-preview.png'%}" alt="" style="
->>>>>>> ce082dae88308b17f1a1f4c6b20062209e8e8807
-                 border: solid 1px #CCC">
+
                  {% endif %}
           </div>
           <a href="{% url 'other_user_profile' id=object.user.id %}">{{object.user.profile.company_name}}</a>
